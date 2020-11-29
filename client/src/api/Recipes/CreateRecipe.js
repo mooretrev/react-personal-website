@@ -9,7 +9,7 @@ const CreateRecipe = async (token, recipeName, recipeItems, ingredients, sizes, 
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.post(`/api/recipes`, reqBody, config);
+    await axios.post('/api/recipes', reqBody, config);
     return 0;
   } catch (err) {
     return -1;

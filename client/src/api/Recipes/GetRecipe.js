@@ -6,7 +6,7 @@ const GetRecipe = async (token, id) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const url = `${process.env.REACT_APP_BASE_URL}/api/recipes/${id}`;
+  const url = `/api/recipes/${id}`;
   const res = await axois.get(url, config);
   return res.data;
 };

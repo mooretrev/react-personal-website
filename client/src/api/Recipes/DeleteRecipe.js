@@ -6,7 +6,7 @@ const DeleteRecipe = async (token, recipeId) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  await axios.delete(`${process.env.REACT_APP_BASE_URL}/api/recipes/${recipeId}`, config);
+  await axios.delete(`api/recipes/${recipeId}`, config);
 };
 
 export default DeleteRecipe;

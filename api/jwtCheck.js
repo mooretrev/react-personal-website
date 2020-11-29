@@ -5,7 +5,7 @@ const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
-    jwksRequestsPerMinute: 5,
+    jwksRequestsPerMinute: 20,
     jwksUri: 'https://tmoore.us.auth0.com/.well-known/jwks.json',
   }),
   audience: process.env.AUTH0_AUDIENCE,

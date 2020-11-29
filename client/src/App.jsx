@@ -50,7 +50,7 @@ function App() {
               <PrivateRoute path="/recipes/new" component={RecipesNew} />
               <PrivateRoute path="/recipes/:id/edit" component={RecipesEdit} />
               <PrivateRoute path="/recipes/:id" component={RecipesId} />
-              <PrivateRoute path="/recipes" component={RecipesHome} />
+              <Route path="/recipes" component={RecipesHome} />
               <Route path="/powerlifting" component={PowerlifingHome} />
               <Route path="/risheil" component={RisheilHome} />
               <Route path="/" component={Home} />

@@ -10,7 +10,9 @@ const router = express.Router();
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-undef */
 
-router.get('/', jwtCheck, (req, res, next) => {
+router.get('/', (req, res, next) => {
+  const token = req.headers.Authorization;
+  console.log(`token ${token}`);
   Recipe.find((err, recipes) => {
     if (err) return console.error(err);
     const recipeJson = JSON.stringify(recipes);
@@ -20,6 +22,8 @@ router.get('/', jwtCheck, (req, res, next) => {
 });
 
 router.get('/:id', jwtCheck, (req, res, next) => {
+  const token = req.headers.aputhorization;
+  console.log(`token ${token}`);
   Recipe.findById(req.params.id, (err, recipe) => {
     if (err) return console.error(err);
     const recipeJson = JSON.stringify(recipe);

@@ -10,7 +10,7 @@ const EditRecipe = async (token, id, recipeName, recipeItems, ingredients, sizes
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.put(`${process.env.REACT_APP_BASE_URL}/api/recipes/${id}`, reqBody, config);
+    await axios.put(`/api/recipes/${id}`, reqBody, config);
     return 1;
   } catch (err) {
     return -1;

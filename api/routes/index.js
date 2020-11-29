@@ -10,7 +10,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', () => {
-  join(dirnamePath, 'build', 'index.html');
+  join(dirnamePath, '../client/build', 'index.html');
 });
 
 export default router;
