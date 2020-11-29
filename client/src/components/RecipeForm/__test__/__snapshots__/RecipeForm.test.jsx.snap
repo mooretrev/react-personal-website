@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RecipeForm /> should render correctly 1`] = `
+<div>
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    key="form"
+    spacing={2}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={12}
+    >
+      <WithStyles(ForwardRef(Card))>
+        <WithStyles(ForwardRef(Typography))
+          variant="h2"
+        >
+          Create Recipe
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(TextField))
+          id="outlined-basic"
+          label="Recipe Name"
+          onChange={[Function]}
+          value=""
+          variant="outlined"
+        />
+      </WithStyles(ForwardRef(Card))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={12}
+    >
+      <div>
+        <WithStyles(ForwardRef(Card))>
+          <RecipeCreateItem
+            index={0}
+            onRecipeItemChange={[Function]}
+            value=""
+          />
+          <Ingredient
+            i={0}
+            ingredientValue=""
+            j={0}
+            key="ingredient0"
+            onIngredientChange={[Function]}
+            onSizeChange={[Function]}
+            onUnitChange={[Function]}
+            sizeValue=""
+            unitValue=""
+          />
+        </WithStyles(ForwardRef(Card))>
+      </div>
+    </WithStyles(ForwardRef(Grid))>
+    <div />
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={12}
+    >
+      <WithStyles(ForwardRef(Button))
+        color="primary"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Submit
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</div>
+`;

@@ -1,0 +1,96 @@
+{
+  "Orange Chicken": {
+    "Batter": {
+      "Egg": "3",
+      "Cornstarch": "1 cup",
+      "Flour": "2 cups"
+    },
+    "Orange Sauce": {
+      "Oil": "1 tbsp",
+      "Chili Flake": "1/4 tsp",
+      "Minced Garlic": "1 tbsp",
+      "Minced Ginger": "1/2 tsp",
+      "Sugar": "1/4 cup",
+      "Brown Sugar": "1/4 cup",
+      "Orange Juice": "1/4 cup",
+      "White Distilled Vinegar": "1/4 cup",
+      "Soy Sauce": "2 tbsp",
+      "Water": "2 tbsp",
+      "Cornstrach": "2 tbsp",
+      "Sesame Oil": "1 tsp"
+    }
+  },
+  "Calzone": {
+    "Dough": {
+      "Warm Water": "3/4 cup",
+      "Instant Yeast": "1 and 1/2 tsp",
+      "Kosher Salt": "1 and 1/2 tsp",
+      "Olive Oil": "1 tbsp"
+    },
+    "Filling": {
+      "Sausage": "1 Package",
+      "Yellow Onion": "1/2 Diced",
+      "Kosher Salt": "1 and 1/2 tsp",
+      "Black Pepper": "1/2 tsp",
+      "Deli Ham": "8 slices",
+      "Pepperoni": "20 slices",
+      "Mozzarella Cheese": "1 cup",
+      "Large Egg": "1"
+    }
+  },
+  "Breakfast Burrito": {
+    "Filling": {
+      "Eggs": 1,
+      "Onions": 1,
+      "Jalopenos": 1,
+      "Potatoes": 1,
+      "Cheese": 1,
+      "Ground Beef": 1,
+      "Salsa": 1,
+      "Hot Sauces": 1
+    }
+  },
+  "Pho": {
+    "Stock": {
+      "Beef Base": 1,
+      "Fish Sauce": 1,
+      "White Sugar": 1,
+      "Ginger": 1,
+      "Yellow Onion": 1,
+      "1 Hours Later": 1,
+      "Colves": 2,
+      "Star Anise": 2,
+      "Cinnamon Stick": 1
+    },
+    "Bowl": {
+      "Rice Stick Noodles": 1,
+      "Thinly Sliced Steak": 1,
+      "Cilantro": 1,
+      "Jalapenos": 1,
+      "Thinny Sliced Onions": 1,
+      "Lime": 1,
+      "Sriracha Sauce": 1,
+      "Hoisin Sauce": 1
+    }
+  },
+  "Pizza Dough": {
+    "Dough": {
+      "Warm Water": "2 and 1/2 cups",
+      "Sugar": "1 tsp",
+      "Active Dry Yeast": "2 tsp",
+      "All Purpose Flour": "7 Cups",
+      "Extra Virgin Olive Oil": "6 tbsp",
+      "Kosher Salt": "1 and 1/2 tsp"
+    }
+  },
+  "Hot Chocolate": {
+    "Ingredients  ": {
+      "Unsweetened Cocoa Powder": "2 tbsp",
+      "Brown Sugar": "1.5 tbsp",
+      "Cream": "1 tbsp",
+      "Milk": "1 cup",
+      "Vanilla Extract": "1/4 tsp",
+      "Small Pinch of Salt": "2 tbsp"
+    }
+  }
+}

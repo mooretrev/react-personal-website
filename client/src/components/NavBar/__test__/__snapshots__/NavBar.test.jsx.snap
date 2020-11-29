@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> should render correctly 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <WithStyles(CssBaseline) />
+  <WithStyles(ForwardRef(AppBar))
+    className="makeStyles-appBar-3"
+    position="fixed"
+  >
+    <WithStyles(ForwardRef(Toolbar))>
+      <WithStyles(ForwardRef(IconButton))
+        aria-label="open drawer"
+        className="makeStyles-menuButton-4"
+        color="inherit"
+        edge="start"
+        onClick={[Function]}
+      >
+        <MenuIcon />
+      </WithStyles(ForwardRef(IconButton))>
+      <WithStyles(ForwardRef(Grid))
+        container={true}
+      >
+        <WithStyles(ForwardRef(Grid))
+          alignItems="center"
+          item={true}
+          xs={8}
+        >
+          <WithStyles(ForwardRef(Typography))
+            noWrap={true}
+            variant="h6"
+          >
+            Home
+          </WithStyles(ForwardRef(Typography))>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          container={true}
+          item={true}
+          justify="flex-end"
+          xs={4}
+        >
+          <LoginButton />
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Toolbar))>
+  </WithStyles(ForwardRef(AppBar))>
+  <nav
+    className="makeStyles-drawer-2"
+  >
+    <Hidden
+      implementation="css"
+      smUp={true}
+    >
+      <WithStyles(ForwardRef(Drawer))
+        ModalProps={
+          Object {
+            "keepMounted": true,
+          }
+        }
+        anchor="left"
+        classes={
+          Object {
+            "paper": "makeStyles-drawerPaper-7",
+          }
+        }
+        onClose={[Function]}
+        open={false}
+        variant="temporary"
+      >
+        <div>
+          <div
+            className="makeStyles-drawerTitle-6"
+          >
+            <WithStyles(ForwardRef(Typography))
+              variant="h5"
+            >
+              Trevor Moore
+            </WithStyles(ForwardRef(Typography))>
+          </div>
+          <div>
+            <WithStyles(ForwardRef(Divider)) />
+            <WithStyles(ForwardRef(List))>
+              <Link
+                className="makeStyles-link-12"
+                key="Home"
+                to="/"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <HomeIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Home"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+              <Link
+                className="makeStyles-link-12"
+                key="Recipes"
+                to="/recipes"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <FastfoodIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Recipes"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+              <Link
+                className="makeStyles-link-12"
+                key="Powerlifting"
+                to="/powerlifting"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <FitnessCenterIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Powerlifting"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+            </WithStyles(ForwardRef(List))>
+            <WithStyles(ForwardRef(Divider)) />
+            <WithStyles(ForwardRef(List))>
+              <Link
+                className="makeStyles-link-12"
+                key="rishiel"
+                to="/risheil"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <FavoriteIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Risheil"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+            </WithStyles(ForwardRef(List))>
+          </div>
+        </div>
+      </WithStyles(ForwardRef(Drawer))>
+    </Hidden>
+    <Hidden
+      implementation="css"
+      xsDown={true}
+    >
+      <WithStyles(ForwardRef(Drawer))
+        classes={
+          Object {
+            "paper": "makeStyles-drawerPaper-7",
+          }
+        }
+        open={true}
+        variant="permanent"
+      >
+        <div>
+          <div
+            className="makeStyles-drawerTitle-6"
+          >
+            <WithStyles(ForwardRef(Typography))
+              variant="h5"
+            >
+              Trevor Moore
+            </WithStyles(ForwardRef(Typography))>
+          </div>
+          <div>
+            <WithStyles(ForwardRef(Divider)) />
+            <WithStyles(ForwardRef(List))>
+              <Link
+                className="makeStyles-link-12"
+                key="Home"
+                to="/"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <HomeIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Home"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+              <Link
+                className="makeStyles-link-12"
+                key="Recipes"
+                to="/recipes"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <FastfoodIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Recipes"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+              <Link
+                className="makeStyles-link-12"
+                key="Powerlifting"
+                to="/powerlifting"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <FitnessCenterIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Powerlifting"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+            </WithStyles(ForwardRef(List))>
+            <WithStyles(ForwardRef(Divider)) />
+            <WithStyles(ForwardRef(List))>
+              <Link
+                className="makeStyles-link-12"
+                key="rishiel"
+                to="/risheil"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <FavoriteIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Risheil"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+            </WithStyles(ForwardRef(List))>
+          </div>
+        </div>
+      </WithStyles(ForwardRef(Drawer))>
+    </Hidden>
+  </nav>
+</div>
+`;

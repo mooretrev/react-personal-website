@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Welcome /> should render correctly 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-card-10"
+>
+  <WithStyles(ForwardRef(CardMedia))
+    alt="Risheil and me"
+    component="img"
+    src="test-file-stub"
+    title="Risheil and Me"
+  />
+  <WithStyles(ForwardRef(CardContent))>
+    <WithStyles(ForwardRef(Typography))
+      component="h2"
+      gutterBottom={true}
+      id="header"
+      variant="h5"
+    >
+      About Me
+    </WithStyles(ForwardRef(Typography))>
+    <WithStyles(ForwardRef(Typography))
+      color="textSecondary"
+      component="p"
+      variant="body2"
+    >
+      Howdy, I am glad you are here. My name is Trevor Moore. I am currently studying at Texas A&M class of 2021. A-Whoop! I am currently looking for an internship for Summer 2021. My passions include powerlifting and water skiing. In the powerlift tab, you can see the different power lifting meets we had and the totals we achieved. Along with the current program I am doing and my current maxes.
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(CardContent))>
+</WithStyles(ForwardRef(Card))>
+`;
