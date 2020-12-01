@@ -4,7 +4,6 @@ exports[`<RecipeForm /> should render correctly 1`] = `
 <div>
   <WithStyles(ForwardRef(Grid))
     container={true}
-    key="form"
     spacing={2}
   >
     <WithStyles(ForwardRef(Grid))
@@ -28,6 +27,7 @@ exports[`<RecipeForm /> should render correctly 1`] = `
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
+      key="recipeItem0"
       xs={12}
     >
       <div>
@@ -47,6 +47,133 @@ exports[`<RecipeForm /> should render correctly 1`] = `
             onUnitChange={[Function]}
             sizeValue=""
             unitValue=""
+          />
+        </WithStyles(ForwardRef(Card))>
+      </div>
+    </WithStyles(ForwardRef(Grid))>
+    <div />
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={12}
+    >
+      <WithStyles(ForwardRef(Button))
+        color="primary"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Submit
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</div>
+`;
+
+exports[`<RecipeForm /> should render correctly 2`] = `
+<div>
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    spacing={2}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={12}
+    >
+      <WithStyles(ForwardRef(Card))>
+        <WithStyles(ForwardRef(Typography))
+          variant="h2"
+        >
+          Create Recipe
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(TextField))
+          id="outlined-basic"
+          label="Recipe Name"
+          onChange={[Function]}
+          value=""
+          variant="outlined"
+        />
+      </WithStyles(ForwardRef(Card))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      key="recipeItem0"
+      xs={12}
+    >
+      <div>
+        <WithStyles(ForwardRef(Card))>
+          <RecipeCreateItem
+            index={0}
+            onRecipeItemChange={[Function]}
+            value="Dough"
+          />
+          <Ingredient
+            i={0}
+            ingredientValue="Flour"
+            j={0}
+            key="ingredient0"
+            onIngredientChange={[Function]}
+            onSizeChange={[Function]}
+            onUnitChange={[Function]}
+            sizeValue="1"
+            unitValue="Cup"
+          />
+          <Ingredient
+            i={0}
+            ingredientValue="Yeast"
+            j={1}
+            key="ingredient1"
+            onIngredientChange={[Function]}
+            onSizeChange={[Function]}
+            onUnitChange={[Function]}
+            sizeValue="2"
+            unitValue="Cup"
+          />
+        </WithStyles(ForwardRef(Card))>
+      </div>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      key="recipeItem1"
+      xs={12}
+    >
+      <div>
+        <WithStyles(ForwardRef(Card))>
+          <RecipeCreateItem
+            index={1}
+            onRecipeItemChange={[Function]}
+            value="Bread"
+          />
+          <Ingredient
+            i={1}
+            ingredientValue="Bread Flour"
+            j={0}
+            key="ingredient0"
+            onIngredientChange={[Function]}
+            onSizeChange={[Function]}
+            onUnitChange={[Function]}
+            sizeValue="1"
+            unitValue="Cup"
+          />
+          <Ingredient
+            i={1}
+            ingredientValue="Water"
+            j={1}
+            key="ingredient1"
+            onIngredientChange={[Function]}
+            onSizeChange={[Function]}
+            onUnitChange={[Function]}
+            sizeValue="1"
+            unitValue="Cup"
+          />
+          <Ingredient
+            i={1}
+            ingredientValue="Sugar"
+            j={2}
+            key="ingredient2"
+            onIngredientChange={[Function]}
+            onSizeChange={[Function]}
+            onUnitChange={[Function]}
+            sizeValue="1"
+            unitValue="Cup"
           />
         </WithStyles(ForwardRef(Card))>
       </div>

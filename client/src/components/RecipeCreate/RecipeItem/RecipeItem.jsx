@@ -17,9 +17,9 @@ function RecipeCreateItem(props) {
 }
 
 RecipeCreateItem.propTypes = {
-  value: PropTypes.element.isRequired,
-  onRecipeItemChange: PropTypes.element.isRequired,
-  index: PropTypes.element.isRequired,
+  value: PropTypes.string.isRequired,
+  onRecipeItemChange: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default RecipeCreateItem;

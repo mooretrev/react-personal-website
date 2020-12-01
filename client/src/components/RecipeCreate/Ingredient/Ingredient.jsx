@@ -53,14 +53,14 @@ function Ingredient(props) {
 }
 
 Ingredient.propTypes = {
-  onIngredientChange: PropTypes.element.isRequired,
-  onSizeChange: PropTypes.element.isRequired,
-  onUnitChange: PropTypes.element.isRequired,
-  ingredientValue: PropTypes.element.isRequired,
-  sizeValue: PropTypes.element.isRequired,
-  unitValue: PropTypes.element.isRequired,
-  i: PropTypes.element.isRequired,
-  j: PropTypes.element.isRequired,
+  onIngredientChange: PropTypes.func.isRequired,
+  onSizeChange: PropTypes.func.isRequired,
+  onUnitChange: PropTypes.func.isRequired,
+  ingredientValue: PropTypes.string.isRequired,
+  sizeValue: PropTypes.string.isRequired,
+  unitValue: PropTypes.string.isRequired,
+  i: PropTypes.number.isRequired,
+  j: PropTypes.number.isRequired,
 
 };
 
