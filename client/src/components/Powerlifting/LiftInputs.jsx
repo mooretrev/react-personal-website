@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
 
 function LiftInputs(props) {
   const { lift } = props;
@@ -24,5 +25,9 @@ function LiftInputs(props) {
     </Grid>
   );
 }
+
+LiftInputs.propTypes = {
+  lift: PropTypes.string.isRequired,
+};
 
 export default LiftInputs;

@@ -13,7 +13,7 @@
     "heroku-prebuild": "npm run install-client && npm run install-api",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
-    "test": "cd client && jest --watch",
+    "test": "cd client && npm run test",
     "lintClient": "cd client && npm run lint",
     "lintApi": "cd api && npm run lint",
     "lint": "npm run lintClient && npm run lintApi"

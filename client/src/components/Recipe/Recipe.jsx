@@ -21,7 +21,20 @@ function Recipe(props) {
 }
 
 Recipe.propTypes = {
-  recipeData: PropTypes.element.isRequired,
+  recipeData: PropTypes.shape({
+    _id: PropTypes.string,
+    recipe_items: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string,
+      ingredients: PropTypes.arrayOf(PropTypes.shape({
+        _id: PropTypes.string,
+        ingredient: PropTypes.string,
+        size: PropTypes.string,
+        unit: PropTypes.string,
+      })),
+      recipe_item: PropTypes.string,
+    })),
+    recipe_name: PropTypes.string,
+  }).isRequired,
 };
 
 export default Recipe;
