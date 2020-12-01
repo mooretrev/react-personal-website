@@ -30,7 +30,7 @@ function RecipeItem(props) {
               {' '}
             </Typography>
           </Grid>
-          <Grid xs={4}>
+          <Grid item xs={4}>
             <Typography className={classes.unit} variant="h6">
               {ingredients[i].size}
               {' '}
@@ -59,7 +59,16 @@ function RecipeItem(props) {
 }
 
 RecipeItem.propTypes = {
-  recipeItem: PropTypes.element.isRequired,
+  recipeItem: PropTypes.shape({
+    _id: PropTypes.string,
+    ingredients: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string,
+      ingredient: PropTypes.string,
+      unit: PropTypes.string,
+      size: PropTypes.string,
+    })),
+    recipe_item: PropTypes.string,
+  }).isRequired,
 };
 
 export default RecipeItem;

@@ -10,6 +10,7 @@ import NavBar from './components/NavBar/NavBar.jsx';
 import Home from './containers/Home/Home.jsx';
 import RecipesHome from './containers/Recipes/RecipesHome.jsx';
 import PowerlifingHome from './containers/Powerlifting/PowerlifingHome.jsx';
+import PowerliftingMeetInput from './containers/Powerlifting/PowerliftingMeetInput.jsx';
 import RisheilHome from './containers/Risheil/RisheilHome.jsx';
 import RecipesNew from './containers/Recipes/RecipesNew.jsx';
 import RecipesId from './containers/Recipes/RecipesId.jsx';
@@ -51,6 +52,7 @@ function App() {
               <PrivateRoute path="/recipes/:id/edit" component={RecipesEdit} />
               <PrivateRoute path="/recipes/:id" component={RecipesId} />
               <Route path="/recipes" component={RecipesHome} />
+              <Route path="/powerlifting/meet/input" component={PowerliftingMeetInput} />
               <Route path="/powerlifting" component={PowerlifingHome} />
               <Route path="/risheil" component={RisheilHome} />
               <Route path="/" component={Home} />

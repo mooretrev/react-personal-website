@@ -1,12 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 import RecipeForm from '../../components/RecipeForm/RecipeForm.jsx';
 
-function RecipesNew(props) {
+function RecipesNew() {
+  const history = useHistory();
+
   const handleBackClick = () => {
-    props.history.push('/recipes');
+    history.push('/recipes');
   };
 
   return (
@@ -27,9 +29,5 @@ function RecipesNew(props) {
     </div>
   );
 }
-
-RecipesNew.propTypes = {
-  history: PropTypes.element.isRequired,
-};
 
 export default RecipesNew;

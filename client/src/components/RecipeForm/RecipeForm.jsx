@@ -6,12 +6,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import RecipeItem from '../RecipeCreate/RecipeItem/RecipeItem.jsx';
 import Ingredient from '../RecipeCreate/Ingredient/Ingredient.jsx';
 import CreateRecipe from '../../api/Recipes/CreateRecipe.js';
 import EditRecipe from '../../api/Recipes/EditRecipe.js';
 
 function RecipeForm(props) {
+  const history = useHistory();
   /* STATES */
   const {
     recipeItems,
@@ -116,9 +118,16 @@ function RecipeForm(props) {
         sizesState,
         unitsState,
       );
-      props.history.push(`/recipes/${props.id}`);
+      history.push(`/recipes/${props.id}`);
     } else {
-      CreateRecipe(token, recipeNameState, recipeItemsState, ingredientsState, sizesState, unitsState);
+      CreateRecipe(
+        token,
+        recipeNameState,
+        recipeItemsState,
+        ingredientsState,
+        sizesState,
+        unitsState,
+      );
       setRequestSuccess(true);
       resetToIntialState();
     }
@@ -177,7 +186,7 @@ function RecipeForm(props) {
     for (let i = 0; i < recipeItemsState.length; i += 1) {
       const item = createRecipeItem(i);
       const gridItem = (
-        <Grid item xs={12}>
+        <Grid key={`recipeItem${i}`} item xs={12}>
           {item}
         </Grid>
       );
@@ -188,7 +197,7 @@ function RecipeForm(props) {
 
   return (
     <div>
-      <Grid key="form" container spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Card>
             <Typography variant="h2">Create Recipe</Typography>
@@ -206,15 +215,13 @@ function RecipeForm(props) {
 }
 
 RecipeForm.propTypes = {
-  recipeItems: PropTypes.element.isRequired,
-  ingredients: PropTypes.element.isRequired,
-  sizes: PropTypes.element.isRequired,
-  units: PropTypes.element.isRequired,
-  recipeName: PropTypes.element.isRequired,
-  edit: PropTypes.element.isRequired,
-  id: PropTypes.element.isRequired,
-  history: PropTypes.element.isRequired,
-
+  recipeItems: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  units: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  recipeName: PropTypes.string.isRequired,
+  edit: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default RecipeForm;

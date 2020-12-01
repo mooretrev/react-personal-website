@@ -5,34 +5,37 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import RecipeItem from '../../components/RecipeItem/RecipeItem.jsx';
 import GetRecipe from '../../api/Recipes/GetRecipe.js';
 import DeleteRecipe from '../../api/Recipes/DeleteRecipe.js';
 
 function RecipesId(props) {
+  const history = useHistory();
+  const match = useRouteMatch();
   const [recipeData, setRecipeData] = useState([]);
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   const handleBackClick = () => {
-    props.history.push('/recipes');
+    history.push('/recipes');
   };
 
   const handleEdit = () => {
     const url = `/recipes/${recipeData._id}/edit`;
-    props.history.push(url);
+    history.push(url);
   };
 
   const handleDelete = async () => {
     const token = await getAccessTokenSilently();
     DeleteRecipe(token, recipeData._id);
     // TODO check for success
-    props.history.push('/recipes');
+    history.push('/recipes');
   };
 
   useEffect(() => {
     const fetchData = async () => {
       const token = await getAccessTokenSilently();
-      const _recipes = await GetRecipe(token, props.match.params.id);
+      const _recipes = await GetRecipe(token, match.params.id);
       setRecipeData(_recipes);
     };
 
@@ -46,7 +49,7 @@ function RecipesId(props) {
         const items = [];
         for (let i = 0; i < recipeItems.length; i += 1) {
           items.push(
-            <Grid item xs={12} md={6}>
+            <Grid key={recipeItems[i]} item xs={12} md={6}>
               <Card>
                 <RecipeItem key={i} recipeItem={recipeItems[i]} />
               </Card>
@@ -86,10 +89,5 @@ function RecipesId(props) {
 
   );
 }
-
-RecipesId.propTypes = {
-  history: PropTypes.element.isRequired,
-  match: PropTypes.element.isRequired,
-};
 
 export default RecipesId;

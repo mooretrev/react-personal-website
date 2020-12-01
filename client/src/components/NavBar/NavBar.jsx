@@ -26,7 +26,6 @@ import LoginButton from '../LoginButton.jsx';
 import LogoutButton from '../LogoutButton.jsx';
 
 function NavBar(props) {
-  const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -98,8 +97,6 @@ function NavBar(props) {
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -115,7 +112,7 @@ function NavBar(props) {
             <MenuIcon />
           </IconButton>
           <Grid container>
-            <Grid item xs={8} alignItems="center">
+            <Grid item xs={8}>
               <Typography variant="h6" noWrap>
                 {title}
               </Typography>
@@ -130,7 +127,6 @@ function NavBar(props) {
       <nav className={classes.drawer}>
         <Hidden smUp implementation="css">
           <Drawer
-            container={container}
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
@@ -160,9 +156,5 @@ function NavBar(props) {
     </div>
   );
 }
-
-NavBar.propTypes = {
-  window: PropTypes.element.isRequired,
-};
 
 export default NavBar;

@@ -3,6 +3,9 @@ import { Route } from 'react-router-dom';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import Loading from './Loading.jsx';
 
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+
 const PrivateRoute = ({ component, ...args }) => (
   <Route
     component={withAuthenticationRequired(component, {
