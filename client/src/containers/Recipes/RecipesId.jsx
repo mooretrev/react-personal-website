@@ -4,17 +4,16 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
-import PropTypes from 'prop-types';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import RecipeItem from '../../components/RecipeItem/RecipeItem.jsx';
 import GetRecipe from '../../api/Recipes/GetRecipe.js';
 import DeleteRecipe from '../../api/Recipes/DeleteRecipe.js';
 
-function RecipesId(props) {
+function RecipesId() {
   const history = useHistory();
   const match = useRouteMatch();
   const [recipeData, setRecipeData] = useState([]);
-  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   const handleBackClick = () => {
     history.push('/recipes');

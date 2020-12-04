@@ -9,12 +9,11 @@ import GetRecipes from '../../api/Recipes/GetRecipes.js';
 function Recipes() {
   const classes = useStyles();
   const [recipes, setRecipes] = useState([]);
-  // const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = await getAccessTokenSilently();
-      const token = undefined;
+      const token = await getAccessTokenSilently();
       const _recipes = await GetRecipes(token);
       setRecipes(_recipes);
     };
@@ -23,8 +22,6 @@ function Recipes() {
   }, []);
 
   const displayCreateRecipe = () => {
-    const { isAuthenticated } = useAuth0();
-
     const createRecipeButton = (
       <Grid item xs={12}>
         <Link to="/recipes/new" className={classes.link}>

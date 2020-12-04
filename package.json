@@ -5,6 +5,8 @@
   "engines": {
     "node": "12.x"
   },
+  "pre-commit": [ "lint", "testg" ],
+
   "scripts": {
     "start": "cd api && node ./bin/www.js",
     "server": "cd api && nodemon ./bin/www.js",
@@ -18,5 +20,8 @@
     "lintClient": "cd client && npm run lint",
     "lintApi": "cd api && npm run lint",
     "lint": "npm run lintClient && npm run lintApi"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
   }
 }

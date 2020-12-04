@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -18,6 +17,7 @@ import useTheme from '@material-ui/core/styles/useTheme';
 import HomeIcon from '@material-ui/icons/Home';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import ShowChartIcon from '@material-ui/icons/ShowChart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -25,7 +25,7 @@ import useStyles from '../../styles/Index.jsx';
 import LoginButton from '../LoginButton.jsx';
 import LogoutButton from '../LogoutButton.jsx';
 
-function NavBar(props) {
+function NavBar() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -43,6 +43,8 @@ function NavBar(props) {
         return <FastfoodIcon />;
       case 2:
         return <FitnessCenterIcon />;
+      case 3:
+        return <ShowChartIcon />;
       default:
     }
     return <div />;
@@ -74,7 +76,7 @@ function NavBar(props) {
       <div>
         <Divider />
         <List>
-          {['Home', 'Recipes', 'Powerlifting'].map((text, index) => (
+          {['Home', 'Recipes', 'Powerlifting', 'Stock'].map((text, index) => (
             <Link className={classes.link} to={createLocation(text)} key={text}>
               <ListItem button onClick={() => handleNavClick(text)}>
                 <ListItemIcon>{renderSwitch(index)}</ListItemIcon>
