@@ -5,7 +5,6 @@ import RecipeForm from '../RecipeForm.jsx';
 import RecipeItem from '../../RecipeCreate/RecipeItem/RecipeItem.jsx';
 import Ingredient from '../../RecipeCreate/Ingredient/Ingredient.jsx';
 
-
 describe('<RecipeForm />', () => {
   it('should render correctly', () => {
     const recipeForm = (

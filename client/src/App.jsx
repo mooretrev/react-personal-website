@@ -15,6 +15,7 @@ import RisheilHome from './containers/Risheil/RisheilHome.jsx';
 import RecipesNew from './containers/Recipes/RecipesNew.jsx';
 import RecipesId from './containers/Recipes/RecipesId.jsx';
 import RecipesEdit from './containers/Recipes/RecipesEdit.jsx';
+import StockHome from './containers/Stock/StockHome.jsx';
 import useStyles from './styles/Index.jsx';
 import Theme from './styles/Theme.jsx';
 import Loading from './components/Loading.jsx';
@@ -48,6 +49,7 @@ function App() {
           <main className={classes.content}>
             <div className={classes.toolbar} />
             <Switch component>
+              <Route path="/stock" component={StockHome} />
               <PrivateRoute path="/recipes/new" component={RecipesNew} />
               <PrivateRoute path="/recipes/:id/edit" component={RecipesEdit} />
               <PrivateRoute path="/recipes/:id" component={RecipesId} />
