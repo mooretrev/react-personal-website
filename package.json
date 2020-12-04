@@ -5,7 +5,7 @@
   "engines": {
     "node": "12.x"
   },
-  "pre-commit": [ "lint", "testg" ],
+  "pre-commit": [ "lint", "test" ],
 
   "scripts": {
     "start": "cd api && node ./bin/www.js",
