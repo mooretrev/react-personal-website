@@ -1,14 +1,17 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import TextField from '@material-ui/core/TextField';
+import { act } from 'react-dom/test-utils';
+import * as Auth from '@auth0/auth0-react';
 import RecipeForm from '../RecipeForm.jsx';
 import RecipeItem from '../../RecipeCreate/RecipeItem/RecipeItem.jsx';
 import Ingredient from '../../RecipeCreate/Ingredient/Ingredient.jsx';
 import CreateRecipe from '../../../api/Recipes/CreateRecipe.js';
 
-jest.mock('../../../api/Recipes/CreateRecipe.js');
 jest.mock('@auth0/auth0-react');
+jest.mock('../../../api/Recipes/CreateRecipe.js');
+
+Auth.useAuth0 = jest.fn(() => ({ getAccessTokenSilently: jest.fn() }));
 
 const inputDataIntoForm = (wrapper) => {
   // recipe name
@@ -79,8 +82,6 @@ const sumbitForm = (wrapper) => {
   sumbitButton.simulate('click');
 };
 
-const flushPromises = () => new Promise(setImmediate);
-
 describe('<RecipeForm />', () => {
   it('should render correctly', () => {
     const recipeForm = (
@@ -150,8 +151,7 @@ describe('<RecipeForm />', () => {
     recipeItemInput.simulate('change', { target: { value: 'Hello' } });
     expect(wrapper.find(Ingredient)).toHaveLength(2);
   });
-  it.only('should be able to take input and submit that input', async () => {
-
+  it('should be able to take input and submit that input', async () => {
     const recipeForm = (
       <RecipeForm
         id="-1"
@@ -166,9 +166,23 @@ describe('<RecipeForm />', () => {
     const mockApiCreate = jest.fn(() => { Promise.resolve(0); });
     CreateRecipe.mockImplementation(mockApiCreate);
     const wrapper = mount(recipeForm);
+
     inputDataIntoForm(wrapper);
     sumbitForm(wrapper);
-    await flushPromises();
-    expect(mockApiCreate).toHaveBeenCalled();
+
+    await act(
+      () => new Promise((resolve) => {
+        setImmediate(() => {
+          wrapper.update();
+          resolve();
+        });
+      }),
+    );
+
+    expect(await mockApiCreate).toHaveBeenCalled();
+    const recipeNameComp = wrapper.find('#recipe_name input');
+    expect(recipeNameComp.props().value).toBe('');
+    const recipeItemComp = wrapper.find('#recipe_item_0 input');
+    expect(recipeItemComp.props().value).toBe('');
   });
 });

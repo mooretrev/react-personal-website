@@ -17,7 +17,7 @@ exports[`<RecipeForm /> should render correctly 1`] = `
           Create Recipe
         </WithStyles(ForwardRef(Typography))>
         <WithStyles(ForwardRef(TextField))
-          id="outlined-basic"
+          id="recipe_name"
           label="Recipe Name"
           onChange={[Function]}
           value=""
@@ -58,6 +58,7 @@ exports[`<RecipeForm /> should render correctly 1`] = `
     >
       <WithStyles(ForwardRef(Button))
         color="primary"
+        id="submit_btn"
         onClick={[Function]}
         variant="contained"
       >
@@ -85,7 +86,7 @@ exports[`<RecipeForm /> should render correctly 2`] = `
           Create Recipe
         </WithStyles(ForwardRef(Typography))>
         <WithStyles(ForwardRef(TextField))
-          id="outlined-basic"
+          id="recipe_name"
           label="Recipe Name"
           onChange={[Function]}
           value=""
@@ -185,6 +186,7 @@ exports[`<RecipeForm /> should render correctly 2`] = `
     >
       <WithStyles(ForwardRef(Button))
         color="primary"
+        id="submit_btn"
         onClick={[Function]}
         variant="contained"
       >

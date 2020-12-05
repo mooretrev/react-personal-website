@@ -3,7 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import PowerliftingMeetEntryCard from '../../components/Powerlifting/PowerliftingMeetEntryCard.jsx';
 
 function PowerliftingMeetInput() {
-  const [lifters, setLifters] = useState(['Trevor', 'Hunter']);
+  const [lifters, setLifters] = useState();
+  setLifters(['Trevor', 'Hunter']);
 
   const createPowerliftingEntryCards = () => {
     const items = [];

@@ -131,6 +131,23 @@ exports[`<NavBar /> should render correctly 1`] = `
                   />
                 </WithStyles(ForwardRef(ListItem))>
               </Link>
+              <Link
+                className="makeStyles-link-12"
+                key="Stock"
+                to="/stock"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <ShowChartIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Stock"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
             </WithStyles(ForwardRef(List))>
             <WithStyles(ForwardRef(Divider)) />
             <WithStyles(ForwardRef(List))>
@@ -229,6 +246,23 @@ exports[`<NavBar /> should render correctly 1`] = `
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Powerlifting"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+              <Link
+                className="makeStyles-link-12"
+                key="Stock"
+                to="/stock"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <ShowChartIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Stock"
                   />
                 </WithStyles(ForwardRef(ListItem))>
               </Link>
