@@ -201,13 +201,13 @@ function RecipeForm(props) {
         <Grid item xs={12}>
           <Card>
             <Typography variant="h2">Create Recipe</Typography>
-            <TextField value={recipeNameState} onChange={handleRecipeNameChange} id="outlined-basic" label="Recipe Name" variant="outlined" />
+            <TextField id="recipe_name" value={recipeNameState} onChange={handleRecipeNameChange} label="Recipe Name" variant="outlined" />
           </Card>
         </Grid>
         {createElements()}
         {createCreationMessage()}
         <Grid item xs={12}>
-          <Button onClick={handleSubmit} variant="contained" color="primary">Submit</Button>
+          <Button id="submit_btn" onClick={handleSubmit} variant="contained" color="primary">Submit</Button>
         </Grid>
       </Grid>
     </div>
