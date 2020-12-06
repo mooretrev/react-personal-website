@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true,
     mongo: true,
-    es2021: true,
+    jest: true,
   },
   extends: [
     'plugin:react/recommended',

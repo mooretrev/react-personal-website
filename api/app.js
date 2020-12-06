@@ -3,7 +3,7 @@ import express from 'express';
 import path, { dirname } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
@@ -11,13 +11,14 @@ import cors from 'cors';
 import powerliftingRouter from './routes/powerlifting.js';
 import recipesRouter from './routes/recipes.js';
 import indexRouter from './routes/index.js';
+// import dirnamePath from './dirname.js';
 
 // set up dir name
-const filenameTemp = fileURLToPath(import.meta.url);
-const dirnamePath = dirname(filenameTemp);
+// const filenameTemp = fileURLToPath(import.meta.url);
+// const dirnamePath = __dirname;
 
 // .env config
-dotenv.config({ path: `${dirnamePath}/.env` });
+// dotenv.config({ path: `${dirnamePath}/.env` });
 
 // connect to mongodb
 const url = `mongodb+srv://Personal-Website:${process.env.MONGO_DB_PASSWORD}@cluster0.e4wxl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
@@ -36,7 +37,7 @@ const appOrigin = process.env.APP_ORIGIN;
 const app = express();
 
 // view engine setup
-app.set('views', path.join(dirnamePath, 'views'));
+// app.set('views', path.join(dirnamePath, 'views'));
 app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
@@ -44,7 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({ origin: appOrigin }));
 
-app.use(express.static(path.join(dirnamePath, '../client/build')));
+// app.use(express.static(path.join(dirnamePath, '../client/build')));
 
 app.use('/', indexRouter);
 app.use('/api/recipes', recipesRouter);
@@ -52,7 +53,7 @@ app.use('/api/powerlifting', powerliftingRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(dirnamePath, '../client/build', 'index.html'));
+    // res.sendFile(path.join(dirnamePath, '../client/build', 'index.html'));
   });
 }
 
