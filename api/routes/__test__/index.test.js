@@ -1,15 +1,9 @@
 import request from 'supertest';
-import app from '../../app.js';
-
-jest.useFakeTimers();
+import App from '../../app.js';
 
 describe('GET / ', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-  test('It should respond with an array of students', (done) => {
-    // const response = await request(app).get("/");
-    // expect(response.statusCode).toBe(200);
-    done();
+  test('It should respond with an array of students', async () => {
+    const response = await request(App).get('/');
+    expect(response.statusCode).toBe(200);
   });
 });
