@@ -10,7 +10,6 @@ const router = express.Router();
 /* eslint-disable no-undef */
 
 router.get('/', (req, res, next) => {
-  const token = req.headers.Authorization;
   Recipe.find((err, recipes) => {
     if (err) return res.status(404);
     const recipeJson = JSON.stringify(recipes);

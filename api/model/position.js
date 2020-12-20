@@ -2,10 +2,26 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
+function optionDataRequired() {
+  return this.option;
+}
+
+function callPutValidation(value) {
+  if (this.option) {
+    if (value === 'CALL') {
+      return true;
+    } if (value === 'PUT') {
+      return true;
+    }
+    return false;
+  }
+  return false;
+}
+
 const positionScheme = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   ticker: {
-    type: Number,
+    type: String,
     required: [true, 'The ticker of the position is required.'],
   },
   averagePrice: {
@@ -24,28 +40,26 @@ const positionScheme = new Schema({
     type: Boolean,
     required: [true, 'The quantity of the position is required.'],
   },
-  optionData: {
-    callPut: {
-      type: String,
-      required: [
-        function validation() { return this.optionData; },
-        'If the option value is true, the callPut field is required.',
-      ],
-    },
-    expirationDate: {
-      type: Date,
-      required: [
-        function validation() { return this.optionData; },
-        'If the option value is true, the expirationDate field is required.',
-      ],
-    },
-    strike: {
-      type: Boolean,
-      required: [
-        function validation() { return this.optionData; },
-        'If the option value is true, the callPut field is required.',
-      ],
-    },
+  callPut: {
+    type: String,
+    required: [
+      callPutValidation,
+      'If the option value is true, the callPut field is required.',
+    ],
+  },
+  expirationDate: {
+    type: Date,
+    required: [
+      optionDataRequired,
+      'If the option value is true, the expirationDate field is required.',
+    ],
+  },
+  strike: {
+    type: Number,
+    required: [
+      optionDataRequired,
+      'If the option value is true, the callPut field is required.',
+    ],
   },
   open: {
     type: Boolean,
