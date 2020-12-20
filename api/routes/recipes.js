@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get('/:id', jwtCheck, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   const token = req.headers.aputhorization;
   console.log(`token ${token}`);
   Recipe.findById(req.params.id, (err, recipe) => {

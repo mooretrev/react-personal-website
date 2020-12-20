@@ -9,11 +9,12 @@ import GetRecipes from '../../api/Recipes/GetRecipes.js';
 function Recipes() {
   const classes = useStyles();
   const [recipes, setRecipes] = useState([]);
-  const { getAccessTokenSilently } = useAuth0();
+  // const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessTokenSilently();
+      // const token = await getAccessTokenSilenly();
+      const token = undefined;
       const _recipes = await GetRecipes(token);
       setRecipes(_recipes);
     };
