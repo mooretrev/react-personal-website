@@ -20,6 +20,7 @@ import useStyles from './styles/Index.jsx';
 import Theme from './styles/Theme.jsx';
 import Loading from './components/Loading.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import MealPlanHome from './containers/MealPlan/MealPlanHome.jsx';
 
 /* eslint no-unused-vars: ['error', { varsIgnorePattern: '[props]' }] */
 
@@ -56,6 +57,7 @@ function App() {
               <Route path="/recipes" component={RecipesHome} />
               <Route path="/powerlifting/meet/input" component={PowerliftingMeetInput} />
               <Route path="/powerlifting" component={PowerlifingHome} />
+              <Route path="/mealplan" component={MealPlanHome} />
               <Route path="/risheil" component={RisheilHome} />
               <Route path="/" component={Home} />
             </Switch>
