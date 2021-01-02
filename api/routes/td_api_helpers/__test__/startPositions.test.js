@@ -32,7 +32,6 @@ describe('start position', () => {
   });
 
   test('Start Position test', async () => {
-
     const docs = [
       {
         _id: mongoose.Types.ObjectId(),
@@ -53,7 +52,7 @@ describe('start position', () => {
         open: true,
       },
     ];
-    
+
     await Position.deleteMany({});
     const allDocs = await Position.find({});
     expect(allDocs).toHaveLength(0);
