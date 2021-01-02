@@ -18,7 +18,6 @@ router.get('/', (req, res, next) => {
   });
 });
 
-
 router.get('/:id', (req, res, next) => {
   const token = req.headers.aputhorization;
   Recipe.findById(req.params.id, (err, recipe) => {

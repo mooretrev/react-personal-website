@@ -9,8 +9,8 @@
     "start": "node ./bin/www",
     "build": "cd client && npm run build",
     "test": "jest -i",
-    "test:update": "jest -u",
-    "test:watch": "jest --watch",
+    "test:update": "jest -u -i",
+    "test:watch": "jest --watch -i",
     "test:coverage": "jest --coverage --colors",
     "lint": "./node_modules/.bin/eslint . --fix --ext .js,.jsx"
   },
