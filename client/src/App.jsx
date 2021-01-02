@@ -51,9 +51,9 @@ function App() {
             <Switch component>
               <Route path="/stock" component={StockHome} />
               <PrivateRoute path="/recipes/new" component={RecipesNew} />
-              <PrivateRoute path="/recipes/:id/edit" component={RecipesEdit} />
-              <PrivateRoute path="/recipes/:id" component={RecipesId} />
-              <PrivateRoute path="/recipes" component={RecipesHome} />
+              <Route path="/recipes/:id/edit" component={RecipesEdit} />
+              <Route path="/recipes/:id" component={RecipesId} />
+              <Route path="/recipes" component={RecipesHome} />
               <Route path="/powerlifting/meet/input" component={PowerliftingMeetInput} />
               <Route path="/powerlifting" component={PowerlifingHome} />
               <Route path="/risheil" component={RisheilHome} />
