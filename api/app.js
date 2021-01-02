@@ -1,34 +1,31 @@
 import createError from 'http-errors';
 import express from 'express';
-import path, { dirname } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import { fileURLToPath } from 'url';
-
+import path from 'path';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import powerliftingRouter from './routes/powerlifting.js';
 import recipesRouter from './routes/recipes.js';
 import indexRouter from './routes/index.js';
-
-// set up dir name
-const filenameTemp = fileURLToPath(import.meta.url);
-const dirnamePath = dirname(filenameTemp);
+import dirnamePath from './dirname.cjs';
 
 // .env config
 dotenv.config({ path: `${dirnamePath}/.env` });
 
 // connect to mongodb
-const url = `mongodb+srv://Personal-Website:${process.env.MONGO_DB_PASSWORD}@cluster0.e4wxl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-/* eslint-disable no-console */
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  /* eslint-disable no-console */
-  console.log('Sucessfull Connected to DB');
-});
+if (process.env.NODE_ENV !== 'test') {
+  const url = `mongodb+srv://Personal-Website:${process.env.MONGO_DB_PASSWORD}@cluster0.e4wxl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+  mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+  const db = mongoose.connection;
+  /* eslint-disable-next-line no-console */
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', () => {
+    /* eslint-disable-next-line no-console */
+    console.log('Sucessfull Connected to DB');
+  });
+}
 
 const appOrigin = process.env.APP_ORIGIN;
 
@@ -36,7 +33,7 @@ const appOrigin = process.env.APP_ORIGIN;
 const app = express();
 
 // view engine setup
-app.set('views', path.join(dirnamePath, 'views'));
+// app.set('views', path.join(dirnamePath, 'views'));
 app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
