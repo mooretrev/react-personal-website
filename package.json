@@ -16,7 +16,9 @@
     "heroku-prebuild": "npm run install-client && npm run install-api",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
-    "test": "cd client && npm test",
+    "test": "npm run testClient && npm run testApi",
+    "testClient": "cd client && npm test",
+    "testApi": "cd api && npm test",
     "lintClient": "cd client && npm run lint",
     "lintApi": "cd api && npm run lint",
     "lint": "npm run lintClient && npm run lintApi"

@@ -33,7 +33,6 @@ export default function MealPlanHome() {
 
   const handleRecipeInput = (newRecipe, index) => {
     if (recipes.includes(newRecipe)) {
-      const indexInt = parseInt(index, 10);
       const copyInputRecipes = JSON.parse(JSON.stringify(inputRecipes));
       copyInputRecipes[index].push(newRecipe);
       setInputRecipes(copyInputRecipes);

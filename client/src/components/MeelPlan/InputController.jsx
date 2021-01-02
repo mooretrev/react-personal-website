@@ -17,6 +17,7 @@ export default function InputController(props) {
         id="recipeInput"
         options={recipes}
         onInputChange={handleRecipeChange}
+        /* eslint-disable-next-line react/jsx-props-no-spreading */
         renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
       />
     </Card>

@@ -63,4 +63,6 @@ DayCard.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.string).isRequired,
   dataRecipes: PropTypes.arrayOf(PropTypes.string).isRequired,
   index: PropTypes.number.isRequired,
+  onRecipeInput: PropTypes.func.isRequired,
+  onRecipeDeletion: PropTypes.func.isRequired,
 };
