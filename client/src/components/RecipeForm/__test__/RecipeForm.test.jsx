@@ -8,7 +8,6 @@ import RecipeItem from '../../RecipeCreate/RecipeItem/RecipeItem.jsx';
 import Ingredient from '../../RecipeCreate/Ingredient/Ingredient.jsx';
 import CreateRecipe from '../../../api/Recipes/CreateRecipe.js';
 
-jest.mock('@auth0/auth0-react');
 jest.mock('../../../api/Recipes/CreateRecipe.js');
 
 Auth.useAuth0 = jest.fn(() => ({ getAccessTokenSilently: jest.fn() }));
