@@ -8,7 +8,7 @@
     "client": "cd client && npm run start",
     "start": "node ./bin/www",
     "build": "cd client && npm run build",
-    "test": "jest",
+    "test": "jest -i",
     "test:update": "jest -u",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
