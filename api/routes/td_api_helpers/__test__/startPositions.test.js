@@ -32,7 +32,6 @@ describe('start position', () => {
   });
 
   test('Start Position test', async () => {
-    await Position.deleteMany({});
 
     const docs = [
       {
@@ -54,6 +53,11 @@ describe('start position', () => {
         open: true,
       },
     ];
+    
+    await Position.deleteMany({});
+    const allDocs = await Position.find({});
+    expect(allDocs).toHaveLength(0);
+
     await Position.insertMany(docs);
     await startPositions();
     await new Promise((r) => setTimeout(r, 500));
