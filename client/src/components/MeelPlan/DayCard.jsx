@@ -50,6 +50,7 @@ export default function DayCard(props) {
           id={`recipeInput${index}`}
           options={dataRecipes}
           onInputChange={handleRecipeChange}
+          /* eslint-disable-next-line react/jsx-props-no-spreading */
           renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
         />
         {renderRecipes()}
