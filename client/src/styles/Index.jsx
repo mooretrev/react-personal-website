@@ -62,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
   searchBar: {
     margin: '10px',
   },
+  cardPadding: {
+    padding: '15px',
+  }
 }));
 
 export default useStyles;

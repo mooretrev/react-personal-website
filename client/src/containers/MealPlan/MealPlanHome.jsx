@@ -1,128 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import GetRecipeNames from '../../api/Recipes/GetRecipeNames.js';
-import DayCard from '../../components/MeelPlan/DayCard.jsx';
-
-const dayOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-export function getCurrentDay(index, offset) {
-  return (index + offset) % 7;
-}
+import { Link } from 'react-router-dom';
+import useStyles from '../../styles/Index.jsx';
+import MealPlanCard from '../../components/MeelPlan/MealPlanCard.jsx';
+import GetMealsPlans from '../../api/MealPlan/GetMealPlans.js';
 
 export default function MealPlanHome() {
-  const [numDays, setNumDays] = useState(1);
-  const [offset, setOffset] = useState(0);
-  const [startDay, setStartDay] = useState('Sunday');
-  const [recipes, setRecipes] = useState([]);
-  const [inputRecipes, setInputRecipes] = useState([[]]);
+  const classes = useStyles();
+
+  const [mealPlans, setMealPlans] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = await getAccessTokenSilently();
+      // const token = await getAccessTokenSilenly();
       const token = undefined;
-      const _recipes = await GetRecipeNames(token);
-      setRecipes(_recipes);
+      const mealPlansCopy = await GetMealsPlans(token);
+      setMealPlans(mealPlansCopy);
     };
 
     fetchData();
   }, []);
 
-  const handleRecipeInput = (newRecipe, index) => {
-    if (recipes.includes(newRecipe)) {
-      const copyInputRecipes = JSON.parse(JSON.stringify(inputRecipes));
-      copyInputRecipes[index].push(newRecipe);
-      setInputRecipes(copyInputRecipes);
+  const renderCreateMealPlanButton = () => (
+    <Grid item xs={12}>
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <Link to="/mealplan/new" className={classes.link}>
+            <Button variant="contained" color="primary">Create Meal Plan</Button>
+          </Link>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 
-      if (index === numDays - 1) {
-        setNumDays(numDays + 1);
-        copyInputRecipes.push([]);
-        setInputRecipes(copyInputRecipes);
+  const renderMealPlans = () => {
+    const items = [];
+    if (mealPlans !== undefined && mealPlans.length > 0) {
+      for (let i = 0; i < mealPlans.length; i += 1) {
+        items.push(
+          <Grid key={`MealPlanCard${i}`} item xs={12} md={6}>
+            <MealPlanCard
+              key={i}
+              mealPlanObj={mealPlans[i]}
+            />
+          </Grid>,
+        );
       }
     }
-  };
-
-  const handleStartDayChange = (event) => {
-    setOffset(dayOfTheWeek.indexOf(event.target.value));
-    setStartDay(event.target.value);
-  };
-
-  const handleRecipeDeletion = (idDayCard, indexRecipes) => {
-    const copyInputRecipes = JSON.parse(JSON.stringify(inputRecipes));
-    const array = copyInputRecipes[idDayCard];
-    array.splice(indexRecipes, 1);
-    setInputRecipes(copyInputRecipes);
-  };
-
-  const handleFinishMealPlan = () => {
-    // TODO api call
-  };
-
-  const renderSelectDays = () => {
-    const items = [];
-
-    for (let i = 0; i < dayOfTheWeek.length; i += 1) {
-      items.push(
-        <MenuItem
-          key={i}
-          value={dayOfTheWeek[i]}
-        >
-          {dayOfTheWeek[i]}
-        </MenuItem>,
-      );
-    }
     return items;
   };
-
-  const renderDayCards = () => {
-    const items = [];
-    for (let i = 0; i < numDays; i += 1) {
-      const day = dayOfTheWeek[getCurrentDay(i, offset)];
-      const id = `${day}${i}`;
-      items.push(
-        <DayCard
-          key={id}
-          day={day}
-          index={i}
-          onRecipeInput={handleRecipeInput}
-          onRecipeDeletion={handleRecipeDeletion}
-          dataRecipes={recipes}
-          recipes={inputRecipes[i]}
-        />,
-      );
-    }
-
-    return items;
-  };
-
-  const render = () => {
-    if (recipes !== undefined && recipes.length > 0) {
-      return (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Select
-              onChange={handleStartDayChange}
-              value={startDay}
-            >
-              {renderSelectDays()}
-            </Select>
-          </Grid>
-          {renderDayCards()}
-          <Grid item xs={12}>
-            <Button variant="contained" color="primary" onClick={handleFinishMealPlan}>Finish Meal Plan</Button>
-          </Grid>
-        </Grid>
-      );
-    }
-    return <Typography variant="h1">Loading</Typography>;
-  };
-
   return (
-    <div>
-      {render()}
-    </div>
+    <Grid container spacing={2}>
+      {renderCreateMealPlanButton()}
+      {renderMealPlans()}
+    </Grid>
   );
 }

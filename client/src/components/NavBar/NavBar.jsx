@@ -19,6 +19,7 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import KitchenIcon from '@material-ui/icons/Kitchen';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import useStyles from '../../styles/Index.jsx';
@@ -42,8 +43,10 @@ function NavBar() {
       case 1:
         return <FastfoodIcon />;
       case 2:
-        return <FitnessCenterIcon />;
+        return <KitchenIcon />;
       case 3:
+        return <FitnessCenterIcon />;
+      case 4:
         return <ShowChartIcon />;
       default:
     }
@@ -54,6 +57,9 @@ function NavBar() {
     const location = text.toLowerCase();
     if (location === 'home') {
       return '/';
+    }
+    if (location === 'meal planner') {
+      return '/mealplan';
     }
     return (`/${text.toLowerCase()}`);
   };
@@ -76,7 +82,7 @@ function NavBar() {
       <div>
         <Divider />
         <List>
-          {['Home', 'Recipes', 'Powerlifting', 'Stock'].map((text, index) => (
+          {['Home', 'Recipes', 'Meal Planner', 'Powerlifting', 'Stock'].map((text, index) => (
             <Link className={classes.link} to={createLocation(text)} key={text}>
               <ListItem button onClick={() => handleNavClick(text)}>
                 <ListItemIcon>{renderSwitch(index)}</ListItemIcon>

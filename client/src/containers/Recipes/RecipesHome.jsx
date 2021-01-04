@@ -62,8 +62,8 @@ function Recipes() {
             </Link>
           </Grid>
           <Grid item xs={2}>
-            <Link to="/mealplan" className={classes.link}>
-              <Button variant="contained" color="primary">Create Meet Plan</Button>
+            <Link to="/mealplan/new" className={classes.link}>
+              <Button variant="contained" color="primary">Create Meal Plan</Button>
             </Link>
           </Grid>
         </Grid>
