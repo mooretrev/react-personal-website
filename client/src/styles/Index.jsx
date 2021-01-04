@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardPadding: {
     padding: '15px',
-  }
+  },
 }));
 
 export default useStyles;

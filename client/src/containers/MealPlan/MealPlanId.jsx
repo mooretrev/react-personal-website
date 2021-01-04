@@ -8,7 +8,7 @@ import Card from '@material-ui/core/Card';
 import GetMealPlan from '../../api/MealPlan/GetMealPlan.js';
 import DeleteMealPlan from '../../api/MealPlan/DeleteMealPlan.js';
 import getUniqueItems from '../../api/MealPlan/getUniqueItems.js';
-import ShoppingList from '../../components/MeelPlan/ShoppingList.jsx';
+import ShoppingList from '../../components/MealPlan/ShoppingList.jsx';
 import GetIngredients from '../../api/MealPlan/GetIngredients.js';
 
 export default function MealPlanId() {

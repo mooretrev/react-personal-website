@@ -4,10 +4,9 @@ import Card from '@material-ui/core/Card';
 import PropTypes from 'prop-types';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
-import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import useStyles from '../../styles/Index.jsx';
-
 
 export default function ShoppingList(props) {
   const classes = useStyles();
@@ -22,7 +21,7 @@ export default function ShoppingList(props) {
             control={<Checkbox />}
             label={ingredients[i]}
           />
-        </Grid>
+        </Grid>,
       );
     }
     return items;

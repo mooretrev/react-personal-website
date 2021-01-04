@@ -1,5 +1,5 @@
 import React from 'react';
-import MealPlanForm from '../../components/MeelPlan/MealPlanForm.jsx';
+import MealPlanForm from '../../components/MealPlan/MealPlanForm.jsx';
 
 export default function MealPlanNew() {
   return (
