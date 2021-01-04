@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DayCard /> should render correctly 1`] = `
+<WithStyles(ForwardRef(Grid))
+  item={true}
+  lg={4}
+  md={6}
+  xs={12}
+>
+  <WithStyles(ForwardRef(Card))>
+    <WithStyles(ForwardRef(Typography))
+      variant="h2"
+    >
+      Monday
+    </WithStyles(ForwardRef(Typography))>
+    <WithStyles(ForwardRef(Autocomplete))
+      id="recipeInput0"
+      onInputChange={[Function]}
+      options={Array []}
+      renderInput={[Function]}
+    />
+  </WithStyles(ForwardRef(Card))>
+</WithStyles(ForwardRef(Grid))>
+`;

@@ -116,6 +116,23 @@ exports[`<NavBar /> should render correctly 1`] = `
               </Link>
               <Link
                 className="makeStyles-link-12"
+                key="Meal Planner"
+                to="/mealplan"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <KitchenIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Meal Planner"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+              <Link
+                className="makeStyles-link-12"
                 key="Powerlifting"
                 to="/powerlifting"
               >
@@ -229,6 +246,23 @@ exports[`<NavBar /> should render correctly 1`] = `
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Recipes"
+                  />
+                </WithStyles(ForwardRef(ListItem))>
+              </Link>
+              <Link
+                className="makeStyles-link-12"
+                key="Meal Planner"
+                to="/mealplan"
+              >
+                <WithStyles(ForwardRef(ListItem))
+                  button={true}
+                  onClick={[Function]}
+                >
+                  <WithStyles(ForwardRef(ListItemIcon))>
+                    <KitchenIcon />
+                  </WithStyles(ForwardRef(ListItemIcon))>
+                  <WithStyles(ForwardRef(ListItemText))
+                    primary="Meal Planner"
                   />
                 </WithStyles(ForwardRef(ListItem))>
               </Link>

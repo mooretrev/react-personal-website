@@ -78,7 +78,7 @@ function RecipesEdit(props) {
     return items;
   };
 
-  const showRecipeForm = () => {
+  const renderRecipeForm = () => {
     if (recipeData.length === 0) {
       return (
         <Typography variant="h2">
@@ -107,7 +107,7 @@ function RecipesEdit(props) {
           <Button onClick={handleBackClick} variant="contained" color="primary">Back to Recipes</Button>
         </Grid>
       </Grid>
-      {showRecipeForm()}
+      {renderRecipeForm()}
     </div>
   );
 }
