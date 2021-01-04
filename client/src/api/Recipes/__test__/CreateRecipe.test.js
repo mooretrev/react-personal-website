@@ -1,4 +1,4 @@
-import RecipeBody from './RecipeBody.js';
+import RecipeBody from '../RecipeBody.js';
 
 describe('create a proper body for the api create action', () => {
   it('even number of inputs', () => {

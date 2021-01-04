@@ -20,8 +20,10 @@ import useStyles from './styles/Index.jsx';
 import Theme from './styles/Theme.jsx';
 import Loading from './components/Loading.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
-
-/* eslint no-unused-vars: ['error', { varsIgnorePattern: '[props]' }] */
+import MealPlanHome from './containers/MealPlan/MealPlanHome.jsx';
+import MealPlanNew from './containers/MealPlan/MealPlanNew.jsx';
+import MealPlanId from './containers/MealPlan/MealPlanId.jsx';
+import MealPlanEdit from './containers/MealPlan/MealPlanEdit.jsx';
 
 function App() {
   const classes = useStyles();
@@ -56,6 +58,10 @@ function App() {
               <Route path="/recipes" component={RecipesHome} />
               <Route path="/powerlifting/meet/input" component={PowerliftingMeetInput} />
               <Route path="/powerlifting" component={PowerlifingHome} />
+              <Route path="/mealplan/new" component={MealPlanNew} />
+              <Route path="/mealplan/:id/edit" component={MealPlanEdit} />
+              <Route path="/mealplan/:id" component={MealPlanId} />
+              <Route path="/mealplan" component={MealPlanHome} />
               <Route path="/risheil" component={RisheilHome} />
               <Route path="/" component={Home} />
             </Switch>

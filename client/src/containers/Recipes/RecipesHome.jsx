@@ -55,9 +55,18 @@ function Recipes() {
   const displayCreateRecipe = () => {
     const createRecipeButton = (
       <Grid item xs={12}>
-        <Link to="/recipes/new" className={classes.link}>
-          <Button variant="contained" color="primary">Create New Recipe</Button>
-        </Link>
+        <Grid container>
+          <Grid item xs={2}>
+            <Link to="/recipes/new" className={classes.link}>
+              <Button variant="contained" color="primary">Create New Recipe</Button>
+            </Link>
+          </Grid>
+          <Grid item xs={2}>
+            <Link to="/mealplan/new" className={classes.link}>
+              <Button variant="contained" color="primary">Create Meal Plan</Button>
+            </Link>
+          </Grid>
+        </Grid>
       </Grid>
     );
 
