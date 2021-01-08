@@ -11,6 +11,7 @@ import RecipeItem from '../RecipeCreate/RecipeItem/RecipeItem.jsx';
 import Ingredient from '../RecipeCreate/Ingredient/Ingredient.jsx';
 import CreateRecipe from '../../api/Recipes/CreateRecipe.js';
 import EditRecipe from '../../api/Recipes/EditRecipe.js';
+import useStyles from '../../styles/Index.jsx';
 
 function RecipeForm(props) {
   const history = useHistory();
@@ -30,6 +31,8 @@ function RecipeForm(props) {
   const [unitsState, setUnits] = useState(units);
   const [recipeNameState, setRecipeName] = useState(recipeName);
   const [requestSuccessState, setRequestSuccess] = useState('');
+
+  const classes = useStyles();
 
   const resetToIntialState = () => {
     setRecipeName('');
@@ -106,6 +109,36 @@ function RecipeForm(props) {
     setUnits(newUnits);
   };
 
+  const handleDuplicate = (i) => {
+    const recipeItemCopy = JSON.parse(JSON.stringify(recipeItemsState));
+    const ingredientCopy = JSON.parse(JSON.stringify(ingredientsState));
+    const sizeCopy = JSON.parse(JSON.stringify(sizesState));
+    const unitCopy = JSON.parse(JSON.stringify(unitsState));
+    const length = recipeItemsState.length - 1;
+
+    recipeItemCopy.push(recipeItemCopy[i]);
+    ingredientCopy.push(ingredientCopy[i]);
+    sizeCopy.push(sizeCopy[i]);
+    unitCopy.push(unitCopy[i]);
+
+    if (recipeItemsState[length] === '') {
+      recipeItemCopy.splice(length, 1);
+      ingredientCopy.splice(length, 1);
+      sizeCopy.splice(length, 1);
+      unitCopy.splice(length, 1);
+
+      recipeItemCopy.push('');
+      ingredientCopy.push(['']);
+      sizeCopy.push(['']);
+      unitCopy.push(['']);
+    }
+
+    setRecipeItems(recipeItemCopy);
+    setIngredients(ingredientCopy);
+    setSizes(sizeCopy);
+    setUnits(unitCopy);
+  };
+
   const handleSubmit = async () => {
     const token = await getAccessTokenSilently();
     if (props.edit) {
@@ -170,13 +203,14 @@ function RecipeForm(props) {
 
   const createRecipeItem = (i) => (
     <div>
-      <Card>
+      <Card className={classes.cardPadding}>
         <RecipeItem
           value={recipeItemsState[i]}
           index={i}
           onRecipeItemChange={handleRecipeItemChange}
         />
         {createIngredients(i)}
+        <Button id="dupicate_btn" onClick={() => handleDuplicate(i)} variant="contained" color="primary">Duplicate</Button>
       </Card>
     </div>
   );
@@ -199,7 +233,7 @@ function RecipeForm(props) {
     <div>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Card>
+          <Card className={classes.cardPadding}>
             <Typography variant="h2">Create Recipe</Typography>
             <TextField id="recipe_name" value={recipeNameState} onChange={handleRecipeNameChange} label="Recipe Name" variant="outlined" />
           </Card>

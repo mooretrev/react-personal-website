@@ -56,12 +56,12 @@ function Recipes() {
     const createRecipeButton = (
       <Grid item xs={12}>
         <Grid container>
-          <Grid item xs={2}>
+          <Grid item xs={6}>
             <Link to="/recipes/new" className={classes.link}>
               <Button variant="contained" color="primary">Create New Recipe</Button>
             </Link>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={6}>
             <Link to="/mealplan/new" className={classes.link}>
               <Button variant="contained" color="primary">Create Meal Plan</Button>
             </Link>
