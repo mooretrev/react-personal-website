@@ -184,4 +184,50 @@ describe('<RecipeForm />', () => {
     const recipeItemComp = wrapper.find('#recipe_item_0 input');
     expect(recipeItemComp.props().value).toBe('');
   });
+  it('should duplicate recipes correctly', () => {
+    const recipeForm = (
+      <RecipeForm
+        id="-1"
+        edit={false}
+        recipeItems={['']}
+        ingredients={[['']]}
+        sizes={[['']]}
+        units={[['']]}
+        recipeName=""
+      />
+    );
+    const wrapper = mount(recipeForm);
+    expect(wrapper.find(RecipeItem)).toHaveLength(1);
+    const recipeItemInput = wrapper.find('input').at(1);
+    recipeItemInput.simulate('change', { target: { value: 'Hello' } });
+    expect(wrapper.find(RecipeItem)).toHaveLength(2);
+  });
+  it('should dupilcate recipe item', () => {
+    const recipeForm = (
+      <RecipeForm
+        id="-1"
+        edit={false}
+        recipeItems={['']}
+        ingredients={[['']]}
+        sizes={[['']]}
+        units={[['']]}
+        recipeName=""
+      />
+    );
+    const wrapper = mount(recipeForm);
+    expect(wrapper.find(RecipeItem)).toHaveLength(1);
+    const recipeItemInput = wrapper.find('input').at(1);
+    recipeItemInput.simulate('change', { target: { value: 'Hello' } });
+    expect(wrapper.find(RecipeItem)).toHaveLength(2);
+    const duplicateButton = wrapper.find('#dup_button_0 button');
+    expect(duplicateButton).toHaveLength(1);
+    duplicateButton.simulate('click');
+    expect(wrapper.find(RecipeItem)).toHaveLength(3);
+    const recipeItem1Input = wrapper.find(RecipeItem).at(0).find('input');
+    const recipeItem2Input = wrapper.find(RecipeItem).at(1).find('input');
+    const recipeItem3Input = wrapper.find(RecipeItem).at(2).find('input');
+    expect(recipeItem1Input.props().value).toEqual('Hello');
+    expect(recipeItem2Input.props().value).toEqual('Hello');
+    expect(recipeItem3Input.props().value).toEqual('');
+  });
 });
