@@ -210,7 +210,7 @@ function RecipeForm(props) {
           onRecipeItemChange={handleRecipeItemChange}
         />
         {createIngredients(i)}
-        <Button id="dupicate_btn" onClick={() => handleDuplicate(i)} variant="contained" color="primary">Duplicate</Button>
+        <Button id={`dup_button_${i}`} onClick={() => handleDuplicate(i)} variant="contained" color="primary">Duplicate</Button>
       </Card>
     </div>
   );
