@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MealPlanForm /> should render correctly 1`] = `
+<WithStyles(ForwardRef(Typography))
+  variant="h1"
+>
+  Loading
+</WithStyles(ForwardRef(Typography))>
+`;
