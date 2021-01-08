@@ -219,7 +219,7 @@ describe('<RecipeForm />', () => {
     const recipeItemInput = wrapper.find('input').at(1);
     recipeItemInput.simulate('change', { target: { value: 'Hello' } });
     expect(wrapper.find(RecipeItem)).toHaveLength(2);
-    const duplicateButton = wrapper.find('#dup_button_0 button')
+    const duplicateButton = wrapper.find('#dup_button_0 button');
     expect(duplicateButton).toHaveLength(1);
     duplicateButton.simulate('click');
     expect(wrapper.find(RecipeItem)).toHaveLength(3);
