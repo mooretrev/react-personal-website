@@ -19,6 +19,7 @@ function RecipesNew() {
         </Grid>
       </Grid>
       <RecipeForm
+        id="0"
         edit={false}
         recipeItems={['']}
         ingredients={[['']]}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 function RecipeCreateItem(props) {
   const { value, index } = props;
+
   const handleRecipeItemChange = (event) => {
     props.onRecipeItemChange(event, props.index);
   };
