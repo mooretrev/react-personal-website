@@ -6,9 +6,10 @@ import path from 'path';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import mealPlanRouter from './routes/mealPlan.js';
-import powerliftingRouter from './routes/powerlifting.js';
-import recipesRouter from './routes/recipes.js';
+import restfulRouter from './routes/restfulRouter.js';
+import Recipe from './model/recipe.js';
+import MealPlan from './model/mealPlan.js';
+import Powerlifting from './model/powerlifting.js';
 import indexRouter from './routes/index.js';
 import dirnamePath from './dirname.cjs';
 
@@ -45,9 +46,9 @@ app.use(cors({ origin: appOrigin }));
 app.use(express.static(path.join(dirnamePath, '../client/build')));
 
 app.use('/', indexRouter);
-app.use('/api/recipes', recipesRouter);
-app.use('/api/powerlifting', powerliftingRouter);
-app.use('/api/mealplan', mealPlanRouter);
+app.use('/api/recipes', restfulRouter(Recipe));
+app.use('/api/powerlifting', restfulRouter(Powerlifting));
+app.use('/api/mealplan', restfulRouter(MealPlan));
 
 if (process.env.NODE_ENV === 'production') {
   app.get('/*', (req, res) => {
