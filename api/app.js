@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import restfulRouter from './routes/restfulRouter.js';
+import ShoppingList from './model/shoppingList.js';
 import Recipe from './model/recipe.js';
 import MealPlan from './model/mealPlan.js';
 import Powerlifting from './model/powerlifting.js';
@@ -49,6 +50,7 @@ app.use('/', indexRouter);
 app.use('/api/recipes', restfulRouter(Recipe));
 app.use('/api/powerlifting', restfulRouter(Powerlifting));
 app.use('/api/mealplan', restfulRouter(MealPlan));
+app.use('/api/shoppinglist', restfulRouter(ShoppingList));
 
 if (process.env.NODE_ENV === 'production') {
   app.get('/*', (req, res) => {

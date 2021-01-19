@@ -8,6 +8,7 @@ function mealPlanValidator(value) {
 
 const mealPlanSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
+  shoppingListId: { type: mongoose.Schema.Types.ObjectId, required: true },
   date: { type: Date, required: true },
   startDay: { type: String, required: true },
   numDaysPlanned: { type: Number, required: mealPlanValidator },
@@ -17,6 +18,6 @@ const mealPlanSchema = new Schema({
   }],
 });
 
-const Recipe = mongoose.model('MealPlan', mealPlanSchema);
+const MealPlan = mongoose.model('MealPlan', mealPlanSchema);
 
-export default Recipe;
+export default MealPlan;
