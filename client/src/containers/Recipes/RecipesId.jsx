@@ -33,7 +33,8 @@ function RecipesId() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessTokenSilently();
+      const token = undefined;
+      // const token = await getAccessTokenSilently();
       const _recipes = await GetRecipe(token, match.params.id);
       setRecipeData(_recipes);
     };
