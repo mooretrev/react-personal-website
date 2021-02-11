@@ -4,9 +4,11 @@ exports[`<PositionSizeCalculator /> should render correctly 1`] = `
 <div>
   <WithStyles(ForwardRef(Card))>
     <WithStyles(ForwardRef(Grid))
+      className="makeStyles-cardPadding-14"
       container={true}
     >
       <WithStyles(ForwardRef(Grid))
+        className="makeStyles-gridItemSpacing-15"
         item={true}
         xs={12}
       >
@@ -17,10 +19,13 @@ exports[`<PositionSizeCalculator /> should render correctly 1`] = `
         </WithStyles(ForwardRef(Typography))>
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
+        className="makeStyles-gridItemSpacing-15"
         item={true}
-        xs={4}
+        md={4}
+        xs={12}
       >
         <WithStyles(ForwardRef(TextField))
+          fullWidth={true}
           id="acct_size_input"
           label="Account Size"
           onChange={[Function]}
@@ -29,10 +34,13 @@ exports[`<PositionSizeCalculator /> should render correctly 1`] = `
         />
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
+        className="makeStyles-gridItemSpacing-15"
         item={true}
-        xs={4}
+        md={4}
+        xs={12}
       >
         <WithStyles(ForwardRef(TextField))
+          fullWidth={true}
           id="stop_loss_input"
           label="Stop Loss"
           onChange={[Function]}
@@ -41,10 +49,13 @@ exports[`<PositionSizeCalculator /> should render correctly 1`] = `
         />
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
+        className="makeStyles-gridItemSpacing-15"
         item={true}
-        xs={4}
+        md={4}
+        xs={12}
       >
         <WithStyles(ForwardRef(TextField))
+          fullWidth={true}
           id="entry_input"
           label="Entry"
           onChange={[Function]}
@@ -53,6 +64,7 @@ exports[`<PositionSizeCalculator /> should render correctly 1`] = `
         />
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
+        className="makeStyles-gridItemSpacing-15"
         item={true}
         xs={12}
       >
