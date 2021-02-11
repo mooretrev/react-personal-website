@@ -4,8 +4,11 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import useStyles from '../../styles/Index.jsx';
 
 function PositionSizeCalculator(props) {
+  const classes = useStyles();
+
   const [accountSize, setAccountSize] = useState('');
   const [stopLoss, setStopLoss] = useState('');
   const [entry, setEntry] = useState('');
@@ -30,7 +33,7 @@ function PositionSizeCalculator(props) {
       const numShares = amountRisk / (entryInt - stopLossInt);
       const size = entryInt * numShares;
       return (
-        <Typography id="output" variant="h4">
+        <Typography id="output" variant="h6">
           Position Size is
           {' '}
           {size}
@@ -56,22 +59,22 @@ function PositionSizeCalculator(props) {
   return (
     <div>
       <Card>
-        <Grid container>
-          <Grid item xs={12}>
+        <Grid container className={classes.cardPadding}>
+          <Grid item className={classes.gridItemSpacing} xs={12}>
             <Typography variant="h2">
               Position Size Calculator
             </Typography>
           </Grid>
-          <Grid item xs={4}>
-            <TextField value={accountSize} id="acct_size_input" label="Account Size" variant="outlined" onChange={handleAccountSizeInput} />
+          <Grid item className={classes.gridItemSpacing} xs={12} md={4}>
+            <TextField fullWidth value={accountSize} id="acct_size_input" label="Account Size" variant="outlined" onChange={handleAccountSizeInput} />
           </Grid>
-          <Grid item xs={4}>
-            <TextField value={stopLoss} id="stop_loss_input" label="Stop Loss" variant="outlined" onChange={handleStopLossInput} />
+          <Grid item className={classes.gridItemSpacing} xs={12} md={4}>
+            <TextField fullWidth value={stopLoss} id="stop_loss_input" label="Stop Loss" variant="outlined" onChange={handleStopLossInput} />
           </Grid>
-          <Grid item xs={4}>
-            <TextField value={entry} id="entry_input" label="Entry" variant="outlined" onChange={handleEntryInput} />
+          <Grid item className={classes.gridItemSpacing} xs={12} md={4}>
+            <TextField fullWidth value={entry} id="entry_input" label="Entry" variant="outlined" onChange={handleEntryInput} />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item className={classes.gridItemSpacing} xs={12}>
             {displayPositionSize()}
           </Grid>
         </Grid>
