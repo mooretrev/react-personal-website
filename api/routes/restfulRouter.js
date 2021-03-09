@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import jwtCheck from '../jwtCheck.js';
+import jwtCheck from '../middleware/jwtCheck.js';
+import approved from '../middleware/approvedUser.js';
 
 export default function restfulRouter(model) {
   const router = express.Router();
@@ -17,7 +18,7 @@ export default function restfulRouter(model) {
     });
   });
 
-  router.get('/:id', (req, res, next) => {
+  router.get('/:id', jwtCheck, approved, (req, res, next) => {
     const token = req.headers.authorization;
     model.findById(req.params.id, (err, response) => {
       if (err) return res.status(404);
@@ -26,7 +27,7 @@ export default function restfulRouter(model) {
         res.sendStatus(404);
         return 0;
       }
-      res.send(responseJson);
+      res.end(responseJson);
       return 0;
     });
   });
@@ -36,6 +37,8 @@ export default function restfulRouter(model) {
     modelBody._id = mongoose.Types.ObjectId();
     model.create(modelBody, (err, response) => {
       if (err) return handleError(err);
+
+      res.setHeader('Content-Type', 'application/json');
       res.end(JSON.stringify(response));
       return 0;
     });

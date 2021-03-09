@@ -1,6 +1,6 @@
 import express from 'express';
 import Position from '../model/position.js';
-import jwtCheck from '../jwtCheck.js';
+import jwtCheck from '../middleware/jwtCheck.js';
 import startPositions from './td_api_helpers/startPositions.js';
 import closePositions from './td_api_helpers/closePositions.js';
 
