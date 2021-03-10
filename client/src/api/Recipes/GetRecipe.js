@@ -1,13 +1,8 @@
 import axois from 'axios';
 
-const GetRecipe = async (token, id) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+const GetRecipe = async (id) => {
   const url = `/api/recipes/${id}`;
-  const res = await axois.get(url, config);
+  const res = await axois.get(url);
   return res.data;
 };
 

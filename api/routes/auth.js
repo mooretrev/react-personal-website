@@ -2,8 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import * as argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
-
 import User from '../model/user.js';
+import jwtCheck from '../middleware/jwtCheck.js';
 
 const router = express.Router();
 
@@ -42,17 +42,30 @@ router.post('/login', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   const userRecord = await User.findOne({ username: req.body.username });
   if (!userRecord) {
+    res.status(401);
     res.end(JSON.stringify({ token: undefined, error: 'User not found', authenicated: false }));
     return 0;
   }
 
   const correctPassword = await argon2.verify(userRecord.password, req.body.password);
+
   if (!correctPassword) {
+    res.status(401);
     res.end(JSON.stringify({ token: undefined, error: 'Incorrect password', authenicated: false }));
     return 0;
   }
 
+  if (!userRecord.approved) {
+    res.status(401);
+    res.end(JSON.stringify({ token: undefined, error: 'User not approved', authenicated: false }));
+    return 0;
+  }
+
   const token = generateJWT(userRecord);
+  userRecord.jwtToken = token;
+  userRecord.save();
+
+  res.cookie('token', token, { httpOnly: true });
   res.end(JSON.stringify({
     user: {
       email: userRecord.email,
@@ -61,6 +74,18 @@ router.post('/login', async (req, res) => {
     token,
   }));
   return 0;
+});
+
+router.get('/authenicated', jwtCheck, (req, res) => {
+  res.end(JSON.stringify({ authenicated: true }));
+});
+
+router.delete('/logout', jwtCheck, async (req, res) => {
+  if (req.statusCode !== 401) {
+    await User.findByIdAndUpdate(req.jwtPayload.data._id, { jwtToken: '' });
+    res.status(200);
+    res.end(JSON.stringify({ message: 'Logout Successful' }));
+  }
 });
 
 export default router;

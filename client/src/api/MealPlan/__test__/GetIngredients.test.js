@@ -9,7 +9,7 @@ GetRecipes.mockImplementation(() => new Promise((res) => {
 }));
 
 test('getRequiredRecipes', async () => {
-  const res = await getRequiredRecipes(undefined, ['Hot Cholocate', 'Recipe']);
+  const res = await getRequiredRecipes(['Hot Cholocate', 'Recipe']);
 
   expect(res).toHaveLength(2);
   expect(res[0].recipe_name).toEqual('Hot Cholocate');
@@ -23,7 +23,7 @@ test('parseIntoIngredients', () => {
 });
 
 test('GetIngredients', async () => {
-  const res = await GetIngredients(undefined, ['Hot Cholocate', 'Recipe']);
+  const res = await GetIngredients(['Hot Cholocate', 'Recipe']);
   const ans = ['Powder', 'Sugar', 'Extract', 'Milk', 'Water'];
   expect(res).toEqual(ans);
 });

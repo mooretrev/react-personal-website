@@ -1,16 +1,11 @@
 import axios from 'axios';
 import RecipeBody from './RecipeBody.js';
 
-const EditRecipe = async (token, id, recipeName, recipeItems, ingredients, sizes, units) => {
+const EditRecipe = async (id, recipeName, recipeItems, ingredients, sizes, units) => {
   const reqBody = RecipeBody(recipeName, recipeItems, ingredients, sizes, units);
 
   try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    await axios.put(`/api/recipes/${id}`, reqBody, config);
+    await axios.put(`/api/recipes/${id}`, reqBody);
     return 1;
   } catch (err) {
     return -1;

@@ -20,7 +20,11 @@ dotenv.config({ path: `${dirnamePath}/.env` });
 // connect to mongodb
 if (process.env.NODE_ENV !== 'test') {
   const url = `mongodb+srv://Personal-Website:${process.env.MONGO_DB_PASSWORD}@cluster0.e4wxl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
-  mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  });
   const db = mongoose.connection;
   /* eslint-disable-next-line no-console */
   db.on('error', console.error.bind(console, 'connection error:'));

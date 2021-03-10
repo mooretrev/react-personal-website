@@ -11,6 +11,10 @@ const userSchema = new Schema({
     type: mongoose.Schema.Types.Boolean,
     default: false,
   },
+  jwtToken: {
+    type: mongoose.Schema.Types.String,
+    default: '',
+  },
 });
 
 const User = mongoose.model('User', userSchema);

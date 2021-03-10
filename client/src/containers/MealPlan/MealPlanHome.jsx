@@ -13,9 +13,7 @@ export default function MealPlanHome() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = await getAccessTokenSilenly();
-      const token = undefined;
-      const mealPlansCopy = await GetMealsPlans(token);
+      const mealPlansCopy = await GetMealsPlans();
       setMealPlans(mealPlansCopy);
     };
 

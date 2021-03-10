@@ -32,7 +32,7 @@ export default function restfulRouter(model) {
     });
   });
 
-  router.post('/', jwtCheck, (req, res, next) => {
+  router.post('/', jwtCheck, approved, (req, res, next) => {
     const modelBody = req.body;
     modelBody._id = mongoose.Types.ObjectId();
     model.create(modelBody, (err, response) => {
@@ -44,7 +44,7 @@ export default function restfulRouter(model) {
     });
   });
 
-  router.put('/:id', jwtCheck, (req, res, next) => {
+  router.put('/:id', jwtCheck, approved, (req, res, next) => {
     const responseBody = req.body;
     model.findOneAndUpdate({ _id: req.params.id }, responseBody, (err, doc) => {
       if (err) return handleError(err);
@@ -53,7 +53,7 @@ export default function restfulRouter(model) {
     });
   });
 
-  router.delete('/:id', jwtCheck, (req, res, next) => {
+  router.delete('/:id', jwtCheck, approved, (req, res, next) => {
     model.deleteOne({ _id: req.params.id }, (err) => {
       if (err) return res.status(404);
       res.end('Successful Deletion');

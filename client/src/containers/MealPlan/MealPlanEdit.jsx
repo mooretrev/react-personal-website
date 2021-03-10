@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { useRouteMatch } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import MealPlanForm from '../../components/MealPlan/MealPlanForm.jsx';
@@ -9,13 +8,11 @@ import daysOfTheWeek from '../../constants/daysOfTheWeek.js';
 export default function MealPlanEdit() {
   const [mealPlan, setMealPlan] = useState(undefined);
 
-  const { getAccessTokenSilently } = useAuth0();
   const match = useRouteMatch();
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessTokenSilently();
-      const mealPlanCopy = await GetMealPlan(token, match.params.id);
+      const mealPlanCopy = await GetMealPlan(match.params.id);
       setMealPlan(mealPlanCopy);
     };
 

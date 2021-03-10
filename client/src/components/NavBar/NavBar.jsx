@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
@@ -20,13 +20,16 @@ import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import KitchenIcon from '@material-ui/icons/Kitchen';
-import { Link } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+
+import PropTypes from 'prop-types';
 import useStyles from '../../styles/Index.jsx';
 import LoginButton from '../LoginButton.jsx';
 import LogoutButton from '../LogoutButton.jsx';
 
-function NavBar() {
+function NavBar(props) {
+  const locationHook = useLocation();
+
+  const { authenicated, setAuthenicated } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -69,9 +72,10 @@ function NavBar() {
   };
 
   const authenticationButton = () => {
-    const { isAuthenticated } = useAuth0();
-
-    return isAuthenticated ? <LogoutButton /> : <LoginButton />;
+    if (authenicated) {
+      return <LogoutButton setAuthenicated={setAuthenicated} />;
+    }
+    return <LoginButton />;
   };
 
   const drawer = (
@@ -105,64 +109,75 @@ function NavBar() {
     </div>
   );
 
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Grid container>
-            <Grid item xs={8}>
-              <Typography variant="h6" noWrap>
-                {title}
-              </Typography>
-            </Grid>
-            <Grid item container xs={4} justify="flex-end">
-              {authenticationButton()}
-            </Grid>
-          </Grid>
+  const render = () => {
+    if (locationHook.pathname !== '/login' && locationHook.pathname !== '/signup') {
+      return (
+        <div className={classes.root}>
+          <AppBar position="fixed" className={classes.appBar}>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                className={classes.menuButton}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Grid container>
+                <Grid item xs={8}>
+                  <Typography variant="h6" noWrap>
+                    {title}
+                  </Typography>
+                </Grid>
+                <Grid item container xs={4} justify="flex-end">
+                  {authenticationButton()}
+                </Grid>
+              </Grid>
 
-        </Toolbar>
-      </AppBar>
-      <nav className={classes.drawer}>
-        <Hidden smUp implementation="css">
-          <Drawer
-            variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-        <Hidden xsDown implementation="css">
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            variant="permanent"
-            open
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-      </nav>
-    </div>
-  );
+            </Toolbar>
+          </AppBar>
+          <nav className={classes.drawer}>
+            <Hidden smUp implementation="css">
+              <Drawer
+                variant="temporary"
+                anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                ModalProps={{
+                  keepMounted: true, // Better open performance on mobile.
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Drawer
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                variant="permanent"
+                open
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+          </nav>
+        </div>
+      );
+    }
+    return <div />;
+  };
+
+  return render();
 }
 
 export default NavBar;
+
+NavBar.propTypes = {
+  authenicated: PropTypes.bool.isRequired,
+  setAuthenicated: PropTypes.func.isRequired,
+};

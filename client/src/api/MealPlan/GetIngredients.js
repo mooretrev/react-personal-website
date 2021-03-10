@@ -1,7 +1,7 @@
 import GetRecipes from '../Recipes/GetRecipes.js';
 
-export async function getRequiredRecipes(token, recipeNames) {
-  const recipes = await GetRecipes(token);
+export async function getRequiredRecipes(recipeNames) {
+  const recipes = await GetRecipes();
   const requiredRecipes = [];
   recipes.map((recipe) => {
     if (recipeNames.includes(recipe.recipe_name)) {
@@ -38,8 +38,8 @@ export function uniqueItems(items) {
   return retval;
 }
 
-export default async function GetIngredients(token, recipeNames) {
-  const requiredRecipes = await getRequiredRecipes(token, recipeNames);
+export default async function GetIngredients(recipeNames) {
+  const requiredRecipes = await getRequiredRecipes(recipeNames);
   const ingredientsDups = parseIntoIngredients(requiredRecipes);
   return uniqueItems(ingredientsDups);
 }
