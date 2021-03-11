@@ -1,6 +1,7 @@
 import express from 'express';
 import Position from '../model/position.js';
-import jwtCheck from '../jwtCheck.js';
+import jwtCheck from '../middleware/jwtCheck.js';
+import approved from '../middleware/approvedUser.js';
 import startPositions from './td_api_helpers/startPositions.js';
 import closePositions from './td_api_helpers/closePositions.js';
 
@@ -8,7 +9,7 @@ const router = express.Router();
 /* eslint-disable no-unused-vars */
 
 /* GET home page. */
-router.get('/positions', jwtCheck, async (req, res) => {
+router.get('/positions', jwtCheck, approved, async (req, res) => {
   await startPositions();
   await closePositions();
   Position.find((err, recipes) => {

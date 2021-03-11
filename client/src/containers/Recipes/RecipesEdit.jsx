@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -9,11 +8,9 @@ import RecipeForm from '../../components/RecipeForm/RecipeForm.jsx';
 
 function RecipesEdit(props) {
   const [recipeData, setRecipeData] = useState([]);
-  const { getAccessTokenSilently } = useAuth0();
   useEffect(() => {
     const fetchData = async () => {
-      const token = await getAccessTokenSilently();
-      const _recipes = await GetRecipe(token, props.match.params.id);
+      const _recipes = await GetRecipe(props.match.params.id);
       setRecipeData(_recipes);
     };
 

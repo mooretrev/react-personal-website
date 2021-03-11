@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -20,16 +19,14 @@ export default function MealPlanId() {
 
   const match = useRouteMatch();
   const history = useHistory();
-  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = undefined;
-      const mealPlanCopy = await GetMealPlan(token, match.params.id);
+      const mealPlanCopy = await GetMealPlan(match.params.id);
       setMealPlan(mealPlanCopy);
-      const ingredientsCopy = await GetIngredients(token, getUniqueItems(mealPlanCopy));
+      const ingredientsCopy = await GetIngredients(getUniqueItems(mealPlanCopy));
       setIngredients(ingredientsCopy);
-      const recipesCopy = await GetRecipes(token);
+      const recipesCopy = await GetRecipes();
       setRecipes(recipesCopy);
     };
 
@@ -57,8 +54,7 @@ export default function MealPlanId() {
   };
 
   const handleDelete = async () => {
-    const token = await getAccessTokenSilently();
-    DeleteMealPlan(token, mealPlan._id);
+    DeleteMealPlan(mealPlan._id);
     // TODO check for success
     history.push('/mealplan');
   };

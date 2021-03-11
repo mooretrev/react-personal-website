@@ -2,15 +2,12 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
-import * as Auth from '@auth0/auth0-react';
 import RecipeForm from '../RecipeForm.jsx';
 import RecipeItem from '../../RecipeCreate/RecipeItem/RecipeItem.jsx';
 import Ingredient from '../../RecipeCreate/Ingredient/Ingredient.jsx';
 import CreateRecipe from '../../../api/Recipes/CreateRecipe.js';
 
 jest.mock('../../../api/Recipes/CreateRecipe.js');
-
-Auth.useAuth0 = jest.fn(() => ({ getAccessTokenSilently: jest.fn() }));
 
 const inputDataIntoForm = (wrapper) => {
   // recipe name

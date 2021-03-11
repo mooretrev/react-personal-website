@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Grid } from '@material-ui/core';
-// import { useAuth0 } from '@auth0/auth0-react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
@@ -15,14 +14,11 @@ function Recipes() {
   const classes = useStyles();
   const [recipes, setRecipes] = useState([]);
   const [recipeNames, setRecipeNames] = useState([]);
-  // const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = await getAccessTokenSilenly();
-      const token = undefined;
-      const _recipes = await GetRecipes(token);
-      const recipeNamesCopy = await GetRecipeNames(token);
+      const _recipes = await GetRecipes();
+      const recipeNamesCopy = await GetRecipeNames();
       setRecipes(_recipes);
       setRecipeNames(recipeNamesCopy);
     };

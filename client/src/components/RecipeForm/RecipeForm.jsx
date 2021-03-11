@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
@@ -23,7 +22,6 @@ function RecipeForm(props) {
     units,
     recipeName,
   } = props;
-  const { getAccessTokenSilently } = useAuth0();
 
   const [recipeItemsState, setRecipeItems] = useState(recipeItems);
   const [ingredientsState, setIngredients] = useState(ingredients);
@@ -140,10 +138,8 @@ function RecipeForm(props) {
   };
 
   const handleSubmit = async () => {
-    const token = await getAccessTokenSilently();
     if (props.edit) {
       EditRecipe(
-        token,
         props.id,
         recipeNameState,
         recipeItemsState,
@@ -154,7 +150,6 @@ function RecipeForm(props) {
       history.push(`/recipes/${props.id}`);
     } else {
       CreateRecipe(
-        token,
         recipeNameState,
         recipeItemsState,
         ingredientsState,

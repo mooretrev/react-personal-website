@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -22,14 +21,11 @@ export default function MealPlanForm(props) {
   const [successfulSubmission, setSuccessfulSubmission] = useState(false);
   const [failedSubmission, setFailedSubmission] = useState(false);
 
-  const { getAccessTokenSilently } = useAuth0();
   const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = await getAccessTokenSilently();
-      const token = undefined;
-      const _recipes = await GetRecipeNames(token);
+      const _recipes = await GetRecipeNames();
       setRecipes(_recipes);
     };
 
@@ -69,14 +65,13 @@ export default function MealPlanForm(props) {
   const handleFinishMealPlan = async () => {
     const today = new Date();
     const strToday = today.toISOString().substring(0, 10);
-    const token = await getAccessTokenSilently();
     let res;
     if (props.edit) {
-      res = await EditMealPlan(token, props.id, inputRecipes, startDay, strToday);
+      res = await EditMealPlan(props.id, inputRecipes, startDay, strToday);
       history.push(`/mealplan/${props.id}`);
       return;
     }
-    res = await CreateMealPlan(token, inputRecipes, startDay, strToday);
+    res = await CreateMealPlan(inputRecipes, startDay, strToday);
 
     if (res !== -1) {
       setSuccessfulSubmission(true);

@@ -1,14 +1,22 @@
 // src/components/login-button.js
 
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 
 const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0();
+  const history = useHistory();
+
+  const onClick = () => {
+    let next = history.location.pathname;
+    if (next === '/login') {
+      next = '/';
+    }
+    history.push(`/login?next=${next}`);
+  };
   return (
     <Button
-      onClick={() => loginWithRedirect()}
+      onClick={onClick}
       variant="contained"
       color="secondary"
     >

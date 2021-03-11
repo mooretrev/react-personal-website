@@ -3,14 +3,15 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import path from 'path';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import restfulRouter from './routes/restfulRouter.js';
 import Recipe from './model/recipe.js';
 import MealPlan from './model/mealPlan.js';
 import Powerlifting from './model/powerlifting.js';
 import indexRouter from './routes/index.js';
+import authRouter from './routes/auth.js';
 import dirnamePath from './dirname.cjs';
 
 // .env config
@@ -19,7 +20,11 @@ dotenv.config({ path: `${dirnamePath}/.env` });
 // connect to mongodb
 if (process.env.NODE_ENV !== 'test') {
   const url = `mongodb+srv://Personal-Website:${process.env.MONGO_DB_PASSWORD}@cluster0.e4wxl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
-  mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  });
   const db = mongoose.connection;
   /* eslint-disable-next-line no-console */
   db.on('error', console.error.bind(console, 'connection error:'));
@@ -49,6 +54,7 @@ app.use('/', indexRouter);
 app.use('/api/recipes', restfulRouter(Recipe));
 app.use('/api/powerlifting', restfulRouter(Powerlifting));
 app.use('/api/mealplan', restfulRouter(MealPlan));
+app.use('/api/auth', authRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.get('/*', (req, res) => {

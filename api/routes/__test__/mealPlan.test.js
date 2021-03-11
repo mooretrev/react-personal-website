@@ -3,7 +3,11 @@ import mongoose from 'mongoose';
 import App from '../../app.js';
 import MealPlan from '../../model/mealPlan.js';
 
-jest.mock('../../jwtCheck.js', () => jest.fn((req, res, next) => {
+jest.mock('../../middleware/jwtCheck.js', () => jest.fn((req, res, next) => {
+  next();
+}));
+
+jest.mock('../../middleware/approvedUser.js', () => jest.fn((req, res, next) => {
   next();
 }));
 

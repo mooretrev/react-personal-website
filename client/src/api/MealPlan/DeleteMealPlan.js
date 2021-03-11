@@ -1,12 +1,7 @@
 import axios from 'axios';
 
-const DeleteRecipe = async (token, mealPlanId) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  await axios.delete(`api/mealplan/${mealPlanId}`, config);
+const DeleteRecipe = async (mealPlanId) => {
+  await axios.delete(`api/mealplan/${mealPlanId}`);
 };
 
 export default DeleteRecipe;
