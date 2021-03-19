@@ -27,6 +27,11 @@ const useStyles = makeStyles({
     paddingLeft: '5%',
     textAlign: 'center',
   },
+  '@media only screen and (max-width: 450px)': {
+    card: {
+      width: '95%',
+    },
+  },
   inputSpacing: {
     marginTop: '10px',
     marginBottom: '10px',
