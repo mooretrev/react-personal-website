@@ -67,8 +67,8 @@ function App() {
               <Route path="/powerlifting" component={PowerlifingHome} />
               <PrivateRoute authenicated={authenicated} path="/mealplan/new" component={MealPlanNew} />
               <PrivateRoute authenicated={authenicated} path="/mealplan/:id/edit" component={MealPlanEdit} />
-              <Route path="/mealplan/:id" component={MealPlanId} />
-              <Route path="/mealplan" component={MealPlanHome} />
+              <PrivateRoute authenicated={authenicated} path="/mealplan/:id" component={MealPlanId} />
+              <PrivateRoute authenicated={authenicated} path="/mealplan" component={MealPlanHome} />
               <Route path="/risheil" component={RisheilHome} />
               <Route path="/" component={Home} />
             </Switch>
