@@ -1,18 +1,13 @@
 import mongoose from 'mongoose';
 import MealPlan from '../mealPlan.js';
+import { connect, close, clearDatabase } from '../../db';
+
+beforeAll(async () => await connect())
+beforeEach(async () => await clearDatabase())
+afterAll(async () => await close())
+
 
 describe('Meal Plan Model Validation', () => {
-  beforeAll(async () => {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    });
-  });
-
-  afterAll(async () => {
-    await mongoose.connection.close();
-  });
   it('should accept a correct meal plan', async () => {
     const mealPlan = {
       _id: mongoose.Types.ObjectId(),

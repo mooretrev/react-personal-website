@@ -2,11 +2,6 @@
   "name": "react-personal-website",
   "version": "0.0.0",
   "private": true,
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
-  },
   "scripts": {
     "server": "nodemon src/index.ts -e ts,js,json --watch",
     "start": "node src/index.js",
@@ -19,7 +14,6 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-import-meta": "^7.10.4",
-    "@types/jest": "^26.0.23",
     "acorn": "^8.0.4",
     "argon2": "^0.27.1",
     "babel-cli": "^6.26.0",
@@ -36,7 +30,7 @@
     "jwks-rsa": "^1.11.0",
     "jwt-redis": "^6.0.0",
     "mongodb": "^3.6.3",
-    "mongoose": "^5.10.13",
+    "mongoose": "^5.12.15",
     "morgan": "~1.9.1",
     "redis": "^3.0.2",
     "source-map-loader": "^3.0.0",
@@ -51,7 +45,7 @@
     "@babel/preset-react": "^7.12.7",
     "@babel/preset-typescript": "^7.14.5",
     "@shelf/jest-mongodb": "^1.2.3",
-    "@types/mongoose": "^5.11.97",
+    "@types/jest": "^26.0.23",
     "babel-jest": "^26.6.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
@@ -60,7 +54,10 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
-    "jest": "^26.6.3",
-    "react": "^16.14.0"
+    "jest": "^27.0.5",
+    "mongodb-memory-server": "^7.0.0-beta.46",
+    "react": "^16.14.0",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.4"
   }
 }
