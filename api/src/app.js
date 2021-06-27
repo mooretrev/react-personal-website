@@ -15,11 +15,13 @@ import authRouter from './routes/auth.js';
 import dirnamePath from './dirname.cjs';
 
 // .env config
-dotenv.config({ path: `${dirnamePath}/.env` });
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 // connect to mongodb
 if (process.env.NODE_ENV !== 'test') {
   const url = `mongodb+srv://Personal-Website:${process.env.MONGO_DB_PASSWORD}@cluster0.e4wxl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+  console.log(__dirname);
+  console.log(url);
   mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
