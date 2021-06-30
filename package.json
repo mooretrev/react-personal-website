@@ -5,11 +5,13 @@
   "engines": {
     "node": "12.x"
   },
-  "pre-commit": [ "lint", "test" ],
-
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "scripts": {
     "start": "cd api && node ./bin/www.js",
-    "server": "cd api && nodemon ./bin/www.js",
+    "server": "cd api && npm run server",
     "install": "npm run install-client && npm run install-api",
     "install-client": "cd client && npm install",
     "install-api": "cd api && npm install",
@@ -25,5 +27,8 @@
   },
   "devDependencies": {
     "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "form-urlencoded": "^6.0.4"
   }
 }

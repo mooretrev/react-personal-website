@@ -2,10 +2,9 @@ import mongoose from 'mongoose';
 import MealPlan from '../mealPlan.js';
 import { connect, close, clearDatabase } from '../../db';
 
-beforeAll(async () => await connect())
-beforeEach(async () => await clearDatabase())
-afterAll(async () => await close())
-
+beforeAll(async () => await connect());
+beforeEach(async () => await clearDatabase());
+afterAll(async () => await close());
 
 describe('Meal Plan Model Validation', () => {
   it('should accept a correct meal plan', async () => {

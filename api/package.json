@@ -6,11 +6,10 @@
     "server": "nodemon src/index.ts -e ts,js,json --watch",
     "start": "node src/index.js",
     "build": "tsc -p .",
-    "test": "jest -i",
-    "test:update": "jest -u -i",
-    "test:watch": "jest --watch -i",
-    "test:coverage": "jest --coverage --colors -i",
-    "lint": "./node_modules/.bin/eslint . --fix --ext .js,.jsx"
+    "test": "cd src && jest",
+    "test:watch": "cd src && jest --watch",
+    "test:coverage": "cd src && jest --coverage --colors -i",
+    "lint": "./node_modules/.bin/eslint src --fix --ext .js,.ts"
   },
   "dependencies": {
     "@babel/plugin-syntax-import-meta": "^7.10.4",

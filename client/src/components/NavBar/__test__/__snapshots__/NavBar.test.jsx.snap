@@ -16,7 +16,7 @@ exports[`<NavBar /> should render correctly 1`] = `
         edge="start"
         onClick={[Function]}
       >
-        <Memo(ForwardRef(MenuIcon)) />
+        <MenuIcon />
       </WithStyles(ForwardRef(IconButton))>
       <WithStyles(ForwardRef(Grid))
         container={true}
@@ -89,7 +89,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(HomeIcon)) />
+                    <HomeIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Home"
@@ -106,7 +106,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(FastfoodIcon)) />
+                    <FastfoodIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Recipes"
@@ -123,7 +123,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(KitchenIcon)) />
+                    <KitchenIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Meal Planner"
@@ -140,7 +140,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(FitnessCenterIcon)) />
+                    <FitnessCenterIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Powerlifting"
@@ -157,7 +157,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(ShowChartIcon)) />
+                    <ShowChartIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Stock"
@@ -176,7 +176,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   button={true}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(FavoriteIcon)) />
+                    <FavoriteIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Risheil"
@@ -224,7 +224,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(HomeIcon)) />
+                    <HomeIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Home"
@@ -241,7 +241,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(FastfoodIcon)) />
+                    <FastfoodIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Recipes"
@@ -258,7 +258,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(KitchenIcon)) />
+                    <KitchenIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Meal Planner"
@@ -275,7 +275,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(FitnessCenterIcon)) />
+                    <FitnessCenterIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Powerlifting"
@@ -292,7 +292,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(ShowChartIcon)) />
+                    <ShowChartIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Stock"
@@ -311,7 +311,7 @@ exports[`<NavBar /> should render correctly 1`] = `
                   button={true}
                 >
                   <WithStyles(ForwardRef(ListItemIcon))>
-                    <Memo(ForwardRef(FavoriteIcon)) />
+                    <FavoriteIcon />
                   </WithStyles(ForwardRef(ListItemIcon))>
                   <WithStyles(ForwardRef(ListItemText))
                     primary="Risheil"

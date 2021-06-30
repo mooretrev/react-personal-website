@@ -14,6 +14,6 @@ module.exports = {
   },
   rules: {
     'import/extensions': ['error', 'always'],
-    'no-underscore-dangle': ["error", { "allow": ["_id"] }],
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
 };

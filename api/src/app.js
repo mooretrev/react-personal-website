@@ -12,7 +12,6 @@ import MealPlan from './model/mealPlan.js';
 import Powerlifting from './model/powerlifting.js';
 import indexRouter from './routes/index.js';
 import authRouter from './routes/auth.js';
-import dirnamePath from './dirname.cjs';
 
 // .env config
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
@@ -20,8 +19,6 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 // connect to mongodb
 if (process.env.NODE_ENV !== 'test') {
   const url = `mongodb+srv://Personal-Website:${process.env.MONGO_DB_PASSWORD}@cluster0.e4wxl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
-  console.log(__dirname);
-  console.log(url);
   mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -42,7 +39,6 @@ const appOrigin = process.env.APP_ORIGIN;
 const app = express();
 
 // view engine setup
-// app.set('views', path.join(dirnamePath, 'views'));
 app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
@@ -50,7 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({ origin: appOrigin }));
 
-app.use(express.static(path.join(dirnamePath, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use('/', indexRouter);
 app.use('/api/recipes', restfulRouter(Recipe));
@@ -60,7 +56,7 @@ app.use('/api/auth', authRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(dirnamePath, '../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
 
