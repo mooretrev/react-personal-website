@@ -1,8 +1,13 @@
-import path from 'path';
-import { APITokens } from './APITokens';
-const decrypt = require('encrypt_strings').decrypt
+import StringCrypto from 'string-crypto';
+import TDAuthToken, { TDAuthToken as APITokens } from '../../model/TDAuthToken';
+
+const {
+  decryptString,
+} = new StringCrypto()
 
 export default async function loadApiTokens(): Promise<APITokens> {
-  const data = await decrypt(path.join(__dirname, '../tokens/data.json.enc'), process.env.TD_API_PASSCODE)
-  return JSON.parse(data);
+  const tokens = await TDAuthToken.findOne({})
+  tokens.access_token = decryptString(tokens.access_token, process.env.TD_API_PASSCODE)
+  tokens.refresh_token = decryptString(tokens.refresh_token, process.env.TD_API_PASSCODE)
+  return tokens;
 }

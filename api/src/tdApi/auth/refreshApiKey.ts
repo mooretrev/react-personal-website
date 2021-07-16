@@ -1,16 +1,32 @@
 import axios from 'axios';
 import formurlencoded from 'form-urlencoded';
-import { APITokens } from './APITokens';
+import isRefreshTokenNeeded from './isRefreshTokenNeeded';
+import { TDAuthToken as APITokens } from '../../model/TDAuthToken';
 
-export default async function refreshApiKey(refreshToken: string): Promise<APITokens> {
+export interface APIResponse {
+  access_token: string;
+  refresh_token?: string;
+}
+
+export interface Params {
+  grant_type: string,
+  refresh_token: string;
+  client_id: string;
+  access_type?: string;
+}
+
+export default async function refreshApiKey(tokens: APITokens): Promise<APIResponse> {
   const url = 'https://api.tdameritrade.com/v1/oauth2/token';
-  const clientId = process.env.TD_API_CLIENT_ID;
-  const params = {
+  const clientId = process.env.TD_API_CLIENT_ID as string;
+  const params: Params = {
     grant_type: 'refresh_token',
-    refresh_token: refreshToken,
-    access_type: 'offline',
+    refresh_token: tokens.refresh_token,
     client_id: clientId,
   };
+
+  if (isRefreshTokenNeeded(tokens)) {
+    params['access_type'] = 'offline'
+  }
 
   const axoisConfig = {
     headers: {
@@ -19,11 +35,6 @@ export default async function refreshApiKey(refreshToken: string): Promise<APITo
   };
 
   const formParams = formurlencoded(params);
-  try {
-    const response = await axios.post<APITokens>(url, formParams, axoisConfig)
-    return response.data
-  } catch (err) {
-    console.log(err)
-  }
-  return { access_token: '', refresh_token: '', time_stamp: 20 }
+  const response = await axios.post<APIResponse>(url, formParams, axoisConfig)
+  return response.data
 };

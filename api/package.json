@@ -33,6 +33,7 @@
     "morgan": "~1.9.1",
     "redis": "^3.0.2",
     "source-map-loader": "^3.0.0",
+    "string-crypto": "^2.0.1",
     "superagent": "^6.1.0",
     "supertest": "^6.0.1",
     "td_ameritrade_api": "^1.1.2",

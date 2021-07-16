@@ -1,3 +1,4 @@
+// setup eslint for typescript
 module.exports = {
   root: true,
   env: {
