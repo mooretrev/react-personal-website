@@ -1,22 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose'
 
-const { Schema } = mongoose;
+export interface StockPositionInterface {
+    ticker: string;
+    quantity: number;
+    entryDate: Date;
+    exitDate?: Date;
+    entryPrice: number;
+    exitPrice?: number;
+    comments?: string;
+}
 
-const userSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
-  username: mongoose.Schema.Types.String,
-  password: mongoose.Schema.Types.String,
-  email: mongoose.Schema.Types.String,
-  approved: {
-    type: mongoose.Schema.Types.Boolean,
-    default: false,
-  },
-  jwtToken: {
-    type: mongoose.Schema.Types.String,
-    default: '',
-  },
-});
+const StockPositionSchema = new Schema<StockPositionInterface>({
+    ticker: { type: String, required: true },
+    quantity: { type: Number, required: true },
+    entryDate: { type: Date, required: true },
+    exitDate: Date,
+    entryPrice: { type: Number, required: true },
+    exitPrice: Number,
+    comments: String
+})
 
-const User = mongoose.model('User', userSchema);
-
-export default User;
+export default mongoose.model('StockPosition', StockPositionSchema)

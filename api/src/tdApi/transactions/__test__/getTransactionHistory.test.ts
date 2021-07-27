@@ -1,22 +1,14 @@
-import getTransationHistory from '../getTransactionHistory';
-import createTDAuthHeader from '../../auth/headers';
-import axios from 'axios';
+import getTransactionHistory from "../getTransactionHistory";
+import getTransactionHistoryFull from "../getTransactionHistoryFull";
+import sampleTransactionData from "./SampleTransactionHistory.json"
 
-jest.mock('axios')
-jest.mock('../../auth/headers')
+jest.mock('../getTransactionHistoryFull')
 
-const axiosMock = axios as jest.Mocked<typeof axios>;
-const createTDAuthHeaderMock = createTDAuthHeader as jest.MockedFunction<typeof createTDAuthHeader>;
+const mockGetTransactionHistory = getTransactionHistoryFull as jest.MockedFunction<typeof getTransactionHistoryFull>;
+// @ts-ignore
+mockGetTransactionHistory.mockResolvedValue({ data: sampleTransactionData })
 
-test('should get transaction history without error', async () => {
-  const accountNum = 28343;
-  createTDAuthHeaderMock.mockResolvedValue({})
-  await getTransationHistory(accountNum);
-  const today = new Date();
-  const startDate = new Date();
-  startDate.setDate(today.getDate() - 10)
-  const endDateString = today.toISOString().split('T')[0]
-  const startDateString = startDate.toISOString().split('T')[0]
-  const url = `https://api.tdameritrade.com/v1/accounts/${accountNum}/transactions?type=TRADE&startDate=${startDateString}&endDate=${endDateString}`
-  expect(axiosMock.get).toHaveBeenLastCalledWith(url, {})
-});
+test('should get minify transaction history', async () => {
+    const res = await getTransactionHistory(23423)
+    console.log(res)
+})

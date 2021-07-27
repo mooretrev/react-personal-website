@@ -1,5 +1,5 @@
 import StringCrypto from "string-crypto";
-import TDAuthToken, { TDAuthToken as APIToken } from "../../../model/TDAuthToken";
+import TDAuthToken, { TDAuthTokenInterface as APIToken } from "../../../model/TDAuthToken";
 import loadApiTokens from "../loadApiTokens";
 import { connect, close, clearDatabase } from '../../../db';
 

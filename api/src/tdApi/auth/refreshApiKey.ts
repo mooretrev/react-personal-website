@@ -1,7 +1,7 @@
 import axios from 'axios';
 import formurlencoded from 'form-urlencoded';
 import isRefreshTokenNeeded from './isRefreshTokenNeeded';
-import { TDAuthToken as APITokens } from '../../model/TDAuthToken';
+import { TDAuthTokenInterface as APITokens } from '../../model/TDAuthToken';
 
 export interface APIResponse {
   access_token: string;

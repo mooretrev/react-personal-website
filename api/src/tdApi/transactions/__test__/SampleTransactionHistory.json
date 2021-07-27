@@ -1,0 +1,72 @@
+[
+    {
+        "type": "TRADE",
+        "subAccount": "2",
+        "settlementDate": "2021-07-27",
+        "orderId": "T4670579899",
+        "netAmount": -516.33,
+        "transactionDate": "2021-07-23T18:23:00+0000",
+        "orderDate": "2021-07-23T18:23:00+0000",
+        "transactionSubType": "BY",
+        "transactionId": 36344032732,
+        "cashBalanceEffectFlag": true,
+        "description": "BUY TRADE",
+        "fees": {
+            "rFee": 0,
+            "additionalFee": 0,
+            "cdscFee": 0,
+            "regFee": 0,
+            "otherCharges": 0,
+            "commission": 0,
+            "optRegFee": 0,
+            "secFee": 0
+        },
+        "transactionItem": {
+            "accountId": 498973692,
+            "amount": 1,
+            "price": 516.33,
+            "cost": -516.33,
+            "instruction": "BUY",
+            "instrument": {
+                "symbol": "NFLX",
+                "cusip": "64110L106",
+                "assetType": "EQUITY"
+            }
+        }
+    },
+    {
+        "type": "TRADE",
+        "subAccount": "2",
+        "settlementDate": "2021-07-21",
+        "orderId": "T4648460868",
+        "netAmount": 594.08,
+        "transactionDate": "2021-07-19T13:38:02+0000",
+        "orderDate": "2021-07-19T13:37:33+0000",
+        "transactionSubType": "SL",
+        "transactionId": 36237609903,
+        "cashBalanceEffectFlag": true,
+        "description": "SELL TRADE",
+        "fees": {
+            "rFee": 0,
+            "additionalFee": 0,
+            "cdscFee": 0,
+            "regFee": 0,
+            "otherCharges": 0,
+            "commission": 0,
+            "optRegFee": 0,
+            "secFee": 0
+        },
+        "transactionItem": {
+            "accountId": 498973692,
+            "amount": 4,
+            "price": 148.52,
+            "cost": 594.08,
+            "instruction": "SELL",
+            "instrument": {
+                "symbol": "JPM",
+                "cusip": "46625H100",
+                "assetType": "EQUITY"
+            }
+        }
+    }
+]

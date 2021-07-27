@@ -1,7 +1,7 @@
 import TDAuthToken from '../../model/TDAuthToken';
 import { APIResponse } from './refreshApiKey';
 import StringCrypto from 'string-crypto';
-import { TDAuthToken as APITokens } from '../../model/TDAuthToken';
+import { TDAuthTokenInterface as APITokens } from '../../model/TDAuthToken';
 
 const {
   encryptString,

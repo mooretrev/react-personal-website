@@ -1,6 +1,6 @@
 import writeApiData from "../writeApiData";
 import { connect, close, clearDatabase } from '../../../db';
-import TDAuthToken, { TDAuthToken as APIData } from '../../../model/TDAuthToken'
+import TDAuthToken, { TDAuthTokenInterface as APIData } from '../../../model/TDAuthToken'
 import { APIResponse } from "../refreshApiKey";
 
 beforeAll(async () => await connect());

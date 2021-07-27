@@ -1,4 +1,4 @@
-import { TDAuthToken } from '../../../model/TDAuthToken'
+import { TDAuthTokenInterface } from '../../../model/TDAuthToken'
 import getApiToken from '../getApiToken'
 import loadApiTokens from '../loadApiTokens'
 import refreshApiKey, { APIResponse } from '../refreshApiKey'
@@ -13,7 +13,7 @@ const mockRefreshApiKey = refreshApiKey as jest.MockedFunction<typeof refreshApi
 const mockWriteApiData = writeApiData as jest.MockedFunction<typeof writeApiData>;
 
 test('should not get new api tokens', async () => {
-    const data: TDAuthToken = {
+    const data: TDAuthTokenInterface = {
         access_token: 'access',
         refresh_token: 'refresh',
         time_stamp: (new Date().getTime() / 1000 - 900),
@@ -26,7 +26,7 @@ test('should not get new api tokens', async () => {
 })
 
 test('should get new api tokens', async () => {
-    const data: TDAuthToken = {
+    const data: TDAuthTokenInterface = {
         access_token: 'access',
         refresh_token: 'refresh',
         time_stamp: (new Date().getTime() / 1000 - 3000),
