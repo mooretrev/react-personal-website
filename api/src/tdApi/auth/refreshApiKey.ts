@@ -25,7 +25,7 @@ export default async function refreshApiKey(tokens: APITokens): Promise<APIRespo
   };
 
   if (isRefreshTokenNeeded(tokens)) {
-    params['access_type'] = 'offline'
+    params.access_type = 'offline';
   }
 
   const axoisConfig = {
@@ -35,6 +35,6 @@ export default async function refreshApiKey(tokens: APITokens): Promise<APIRespo
   };
 
   const formParams = formurlencoded(params);
-  const response = await axios.post<APIResponse>(url, formParams, axoisConfig)
-  return response.data
-};
+  const response = await axios.post<APIResponse>(url, formParams, axoisConfig);
+  return response.data;
+}

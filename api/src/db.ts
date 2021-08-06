@@ -9,18 +9,18 @@ export async function connect() {
   const mongooseOptions: ConnectOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  }
-  await mongoose.connect(uri, mongooseOptions)
+  };
+  await mongoose.connect(uri, mongooseOptions);
 }
 
 export async function close() {
   await mongoose.connection.dropDatabase();
   await mongoose.connection.close();
-  await mongod.stop()
+  await mongod.stop();
 }
 
 export async function clearDatabase() {
-  const collections = mongoose.connection.collections;
+  const { collections } = mongoose.connection;
 
   for (const key in collections) {
     const collection = collections[key];

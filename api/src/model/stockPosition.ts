@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose';
 
 export interface StockPositionInterface {
     ticker: string;
@@ -11,13 +11,13 @@ export interface StockPositionInterface {
 }
 
 const StockPositionSchema = new Schema<StockPositionInterface>({
-    ticker: { type: String, required: true },
-    quantity: { type: Number, required: true },
-    entryDate: { type: Date, required: true },
-    exitDate: Date,
-    entryPrice: { type: Number, required: true },
-    exitPrice: Number,
-    comments: String
-})
+  ticker: { type: String, required: true },
+  quantity: { type: Number, required: true },
+  entryDate: { type: Date, required: true },
+  exitDate: Date,
+  entryPrice: { type: Number, required: true },
+  exitPrice: Number,
+  comments: String,
+});
 
-export default mongoose.model('StockPosition', StockPositionSchema)
+export default mongoose.model('StockPosition', StockPositionSchema);

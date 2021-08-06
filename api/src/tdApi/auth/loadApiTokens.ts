@@ -3,11 +3,11 @@ import TDAuthToken, { TDAuthTokenInterface as APITokens } from '../../model/TDAu
 
 const {
   decryptString,
-} = new StringCrypto()
+} = new StringCrypto();
 
 export default async function loadApiTokens(): Promise<APITokens> {
-  const tokens = await TDAuthToken.findOne({})
-  tokens.access_token = decryptString(tokens.access_token, process.env.TD_API_PASSCODE)
-  tokens.refresh_token = decryptString(tokens.refresh_token, process.env.TD_API_PASSCODE)
+  const tokens = await TDAuthToken.findOne({});
+  tokens.access_token = decryptString(tokens.access_token, process.env.TD_API_PASSCODE);
+  tokens.refresh_token = decryptString(tokens.refresh_token, process.env.TD_API_PASSCODE);
   return tokens;
 }

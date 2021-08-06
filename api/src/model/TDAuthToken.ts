@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose';
 
 export interface TDAuthTokenInterface {
     access_token: string;
@@ -8,10 +8,10 @@ export interface TDAuthTokenInterface {
 }
 
 const TDAuthTokenSchema = new Schema<TDAuthTokenInterface>({
-    access_token: { type: String, required: true },
-    refresh_token: { type: String, required: true },
-    time_stamp: { type: Number, required: true },
-    refresh_time_stamp: { type: Number, required: true }
-})
+  access_token: { type: String, required: true },
+  refresh_token: { type: String, required: true },
+  time_stamp: { type: Number, required: true },
+  refresh_time_stamp: { type: Number, required: true },
+});
 
-export default mongoose.model('TDAuthToken', TDAuthTokenSchema)
+export default mongoose.model('TDAuthToken', TDAuthTokenSchema);
