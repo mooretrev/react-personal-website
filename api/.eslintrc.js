@@ -19,7 +19,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    // 'import/extensions': ['error', 'always'],
+    'import/extensions': ['error', { js: 'always', ts: 'never' }],
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
 };
