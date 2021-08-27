@@ -1,13 +1,36 @@
 [
     {
         "accountId": 234234,
+        "instruction": "SELL",
+        "positionType": "LONG",
+        "price": 300,
+        "quantity": 2,
+        "totalPrice": 600,
+        "transactionDate": "2021-08-26T18:30",
+        "type": "STOCK",
+        "ticker": "GME"
+    },
+    {
+        "accountId": 234234,
+        "instruction": "BUY",
+        "positionType": "LONG",
+        "price": 250,
+        "quantity": 2,
+        "totalPrice": 500,
+        "transactionDate": "2021-08-23T18:30",
+        "type": "STOCK",
+        "ticker": "GME"
+    },
+    {
+        "accountId": 234234,
         "instruction": "BUY",
         "positionType": "LONG",
         "price": 516.33,
         "quantity": 1,
         "totalPrice": 516.33,
-        "transactionDate": "2021-07-23T18:23:00.000Z",
-        "type": "STOCK"
+        "transactionDate": "2021-07-23T18:23",
+        "type": "STOCK",
+        "ticker": "NFLX"
     },
     {
         "accountId": 234234,
@@ -16,7 +39,8 @@
         "price": 148.52,
         "quantity": 4,
         "totalPrice": 594.08,
-        "transactionDate": "2021-07-19T13:38:02.000Z",
-        "type": "STOCK"
+        "transactionDate": "2021-07-19T13:38",
+        "type": "STOCK",
+        "ticker": "JPM"
     }
 ]

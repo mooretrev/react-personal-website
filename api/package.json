@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "server": "nodemon src/index.ts -e ts,js,json --watch",
-    "start": "node src/index.js",
+    "start": "ts-node src/index.ts",
     "build": "tsc -p .",
     "test": "cd src && jest",
     "test:watch": "cd src && jest --watch",
@@ -60,6 +60,7 @@
     "mongodb-memory-server": "^7.0.0-beta.46",
     "react": "^16.14.0",
     "ts-jest": "^27.0.3",
+    "ts-node": "^10.2.1",
     "typescript": "^4.3.4"
   }
 }

@@ -19,8 +19,9 @@ test('should get minify transaction history', async () => {
       price: 516.33,
       quantity: 1,
       totalPrice: 516.33,
-      transactionDate: new Date('2021-07-23T18:23:00+0000'),
+      transactionDate: '2021-07-23T18:23:00+0000',
       type: 'STOCK',
+      ticker: 'NFLX'
     },
     {
       accountId,
@@ -29,8 +30,9 @@ test('should get minify transaction history', async () => {
       price: 148.52,
       quantity: 4,
       totalPrice: 594.08,
-      transactionDate: new Date('2021-07-19T13:38:02+0000'),
+      transactionDate: '2021-07-19T13:38:02+0000',
       type: 'STOCK',
+      ticker: 'JPM'
     },
 
   ];
