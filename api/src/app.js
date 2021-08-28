@@ -10,8 +10,10 @@ import restfulRouter from './routes/restfulRouter.js';
 import Recipe from './model/recipe.js';
 import MealPlan from './model/mealPlan.js';
 import Powerlifting from './model/powerlifting.js';
+import StockPosition from './routes/stockPosition';
 import indexRouter from './routes/index.js';
 import authRouter from './routes/auth.js';
+import scheduleTasks from './scheduleTasks';
 
 // .env config
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
@@ -52,6 +54,7 @@ app.use('/', indexRouter);
 app.use('/api/recipes', restfulRouter(Recipe));
 app.use('/api/powerlifting', restfulRouter(Powerlifting));
 app.use('/api/mealplan', restfulRouter(MealPlan));
+app.use('/api/stockpositions', StockPosition);
 app.use('/api/auth', authRouter);
 
 if (process.env.NODE_ENV === 'production') {
@@ -59,6 +62,11 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
+
+/**
+ * Schedule periodic tasks
+ */
+scheduleTasks();
 
 // Serve any static files
 // Handle React routing, return all requests to React app
