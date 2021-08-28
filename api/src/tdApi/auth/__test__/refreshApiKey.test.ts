@@ -1,6 +1,6 @@
 import axios from 'axios';
 import formurlencoded from 'form-urlencoded';
-import { TDAuthTokenInterface } from '../../../model/TDAuthToken';
+import { TDAuthTokenModal } from '../../../model/TDAuthToken';
 import refreshApiKey, { Params } from '../refreshApiKey';
 
 jest.mock('axios');
@@ -11,7 +11,7 @@ test('should get refresh token', async () => {
   const clientId = 'id';
   process.env.TD_API_CLIENT_ID = clientId;
 
-  const tokens: TDAuthTokenInterface = {
+  const tokens: TDAuthTokenModal = {
     access_token: 'access',
     refresh_token: 'refresh',
     time_stamp: 2023092390,

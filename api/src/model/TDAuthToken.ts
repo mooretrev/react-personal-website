@@ -1,11 +1,13 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
-export interface TDAuthTokenInterface {
+export interface TDAuthTokenModal {
     access_token: string;
     refresh_token: string;
     time_stamp: number;
     refresh_time_stamp: number;
 }
+
+export interface TDAuthTokenInterface extends TDAuthTokenModal, Document {}
 
 const TDAuthTokenSchema = new Schema<TDAuthTokenInterface>({
   access_token: { type: String, required: true },

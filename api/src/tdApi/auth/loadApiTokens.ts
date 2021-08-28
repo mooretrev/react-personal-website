@@ -1,5 +1,5 @@
 import StringCrypto from 'string-crypto';
-import TDAuthToken, { TDAuthTokenInterface as APITokens } from '../../model/TDAuthToken';
+import TDAuthToken, { TDAuthTokenModal as APITokens } from '../../model/TDAuthToken';
 
 const {
   decryptString,

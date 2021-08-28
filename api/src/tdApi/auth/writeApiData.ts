@@ -1,12 +1,13 @@
 import StringCrypto from 'string-crypto';
-import TDAuthToken, { TDAuthTokenInterface as APITokens } from '../../model/TDAuthToken';
+import TDAuthToken, { TDAuthTokenModal as APITokens } from '../../model/TDAuthToken';
 import { APIResponse } from './refreshApiKey';
 
 const {
   encryptString,
 } = new StringCrypto();
 
-export default async function writeApiData(apiData: APIResponse, tokens: APITokens) {
+export default async function writeApiData(apiData: APIResponse, tokens: APITokens):
+Promise<void> {
   const currentTime = Math.floor(new Date().getTime() / 1000);
 
   let data: APITokens;

@@ -1,8 +1,8 @@
-import { TDAuthTokenInterface } from '../../../model/TDAuthToken';
+import { TDAuthTokenModal } from '../../../model/TDAuthToken';
 import isRefreshTokenNeeded from '../isRefreshTokenNeeded';
 
 test('refresh token should be needed', () => {
-  const tokens: TDAuthTokenInterface = {
+  const tokens: TDAuthTokenModal = {
     access_token: 'access',
     refresh_token: 'refresh',
     time_stamp: new Date().getTime() / 1000,
@@ -13,7 +13,7 @@ test('refresh token should be needed', () => {
 });
 
 test('refresh token should not be needed', () => {
-  const tokens: TDAuthTokenInterface = {
+  const tokens: TDAuthTokenModal = {
     access_token: 'access',
     refresh_token: 'refresh',
     time_stamp: new Date().getTime() / 1000,

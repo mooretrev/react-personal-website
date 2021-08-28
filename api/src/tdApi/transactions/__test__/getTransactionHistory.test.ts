@@ -5,6 +5,8 @@ import sampleTransactionData from './SampleTransactionHistory.json';
 jest.mock('../getTransactionHistoryFull');
 
 const mockGetTransactionHistory = getTransactionHistoryFull as jest.MockedFunction<typeof getTransactionHistoryFull>;
+// Axios response request a lot of parameter to be filled when one the data field is being used
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 mockGetTransactionHistory.mockResolvedValue({ data: sampleTransactionData });
 
@@ -21,7 +23,7 @@ test('should get minify transaction history', async () => {
       totalPrice: 516.33,
       transactionDate: '2021-07-23T18:23:00+0000',
       type: 'STOCK',
-      ticker: 'NFLX'
+      ticker: 'NFLX',
     },
     {
       accountId,
@@ -32,7 +34,7 @@ test('should get minify transaction history', async () => {
       totalPrice: 594.08,
       transactionDate: '2021-07-19T13:38:02+0000',
       type: 'STOCK',
-      ticker: 'JPM'
+      ticker: 'JPM',
     },
 
   ];

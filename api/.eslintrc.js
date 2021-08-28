@@ -19,7 +19,15 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'import/extensions': ['error', { js: 'always', ts: 'never' }],
+    'import/extensions': ['error', { js: 'always', json: 'always', ts: 'never' }],
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
+    'no-return-await': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.ts'],
+      },
+    },
   },
 };

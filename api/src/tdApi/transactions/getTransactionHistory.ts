@@ -1,6 +1,5 @@
 import getTransactionHistoryFull from './getTransactionHistoryFull';
-import {PositionType, InstrumentType} from '../../model/stockPosition'
-
+import { PositionType, InstrumentType } from '../../model/stockPosition';
 
 export interface MinTransactionHistory {
     positionType: PositionType;
@@ -15,7 +14,8 @@ export interface MinTransactionHistory {
 
 }
 
-export default async function getTransactionHistory(account: number): Promise<MinTransactionHistory[]> {
+export default async function getTransactionHistory(account: number):
+Promise<MinTransactionHistory[]> {
   const history = await getTransactionHistoryFull(account);
   const res: MinTransactionHistory[] = history.data.map((transaction) => ({
     positionType: 'LONG',
@@ -26,7 +26,7 @@ export default async function getTransactionHistory(account: number): Promise<Mi
     totalPrice: Math.abs(transaction.transactionItem.cost),
     instruction: transaction.transactionItem.instruction,
     type: 'STOCK',
-    ticker: transaction.transactionItem.instrument.symbol
+    ticker: transaction.transactionItem.instrument.symbol,
   }));
   return res;
 }
