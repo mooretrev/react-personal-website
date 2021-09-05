@@ -9,14 +9,18 @@ export interface StockPositionModel {
     ticker: string;
     instrumentType: InstrumentType;
     quantity: number;
+    quantityClosed: number;
     entryDate: Date;
     exitDate?: Date;
-    entryPrice: number;
+    entryPrice?: number;
+    totalEntryPrice: number;
     exitPrice?: number;
+    totalExitPrice?: number;
     comments?: string;
     initialPositionSize?: number;
     gainOrLoss?: number;
     finalPositionSize?: number;
+    closed?: boolean;
 }
 
 export interface StockPositionInterface extends StockPositionModel, Document {}
@@ -26,27 +30,40 @@ const StockPositionSchema = new Schema<StockPositionInterface>({
   ticker: { type: String, required: true },
   instrumentType: { type: String, required: true },
   quantity: { type: Number, required: true },
+  quantityClosed: Number,
   entryDate: { type: Date, required: true },
   exitDate: Date,
-  entryPrice: { type: Number, required: true },
-  exitPrice: Number,
+  totalEntryPrice: { type: Number, required: true },
+  totalExitPrice: Number,
   comments: String,
 });
 
-StockPositionSchema.virtual('initialPositionSize')
-  .get(function initPosition(this: StockPositionInterface) {
-    return this.quantity * this.entryPrice;
+StockPositionSchema.virtual('closed')
+  .get(function closed(this: StockPositionInterface) {
+    if (this.quantityClosed) {
+      return this.quantity === this.quantityClosed;
+    }
+    return false;
   });
 
-StockPositionSchema.virtual('finalPositionSize')
+StockPositionSchema.virtual('entryPrice')
+  .get(function initPosition(this: StockPositionInterface) {
+    return this.totalEntryPrice / this.quantity;
+  });
+
+StockPositionSchema.virtual('exitPrice')
   .get(function gainOrLost(this: StockPositionInterface) {
-    if (this.exitPrice !== undefined) { return this.quantity * this.exitPrice; }
+    if (this.totalEntryPrice !== undefined && this.closed) {
+      return this.totalExitPrice as number / this.quantity;
+    }
     return null;
   });
 
 StockPositionSchema.virtual('gainOrLoss')
   .get(function gainOrLost(this: StockPositionInterface) {
-    if (this.exitPrice !== undefined) { return (this.exitPrice - this.entryPrice) * this.quantity; }
+    if (this.totalExitPrice !== undefined && this.closed) {
+      return (this.totalExitPrice - this.totalEntryPrice);
+    }
     return null;
   });
 
