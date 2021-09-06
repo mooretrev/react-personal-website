@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import GeneralMessage from './GeneralMessage'
 

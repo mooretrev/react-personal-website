@@ -22,6 +22,7 @@ module.exports = {
     'import/extensions': ['error', { js: 'always', json: 'always', ts: 'never' }],
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
     'no-return-await': 'off',
+    'no-await-in-loop': 'off',
   },
   settings: {
     'import/resolver': {

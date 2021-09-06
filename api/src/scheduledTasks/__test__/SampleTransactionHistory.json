@@ -25,6 +25,28 @@
         "accountId": 234234,
         "instruction": "BUY",
         "positionType": "LONG",
+        "price": 200,
+        "quantity": 1,
+        "totalPrice": 200,
+        "transactionDate": "2021-08-24T18:30",
+        "type": "STOCK",
+        "ticker": "GME"
+    },
+    {
+        "accountId": 234234,
+        "instruction": "SELL",
+        "positionType": "LONG",
+        "price": 310,
+        "quantity": 1,
+        "totalPrice": 310,
+        "transactionDate": "2021-08-30T18:30",
+        "type": "STOCK",
+        "ticker": "GME"
+    },
+    {
+        "accountId": 234234,
+        "instruction": "BUY",
+        "positionType": "LONG",
         "price": 516.33,
         "quantity": 1,
         "totalPrice": 516.33,

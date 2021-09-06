@@ -1,4 +1,5 @@
-import StockPosition, { StockPositionInterface } from '../model/stockPosition';
+import StockPosition, { StockPositionInterface, StockPositionModel } from '../model/stockPosition';
+import { findOneOpenPosition } from '../model/stockPositionQueries';
 import getTransationHistory from '../tdApi/transactions/getTransactionHistory';
 import getAccountsJSON from '../tdApi/accounts/getAccountJSON';
 
@@ -16,33 +17,35 @@ export default async function saveTradeData(): Promise<void> {
   });
   for (let i = 0; i < history.length; i += 1) {
     const transaction = history[i];
-    const query = {
-      ticker: transaction.ticker,
-      quantity: transaction.quantity,
-    };
-    const position: StockPositionInterface = await StockPosition.findOne(query);
-    if (position !== null) {
-      if (transaction.type === 'STOCK') {
-        if (transaction.positionType === 'LONG') {
-          if (transaction.instruction === 'SELL') {
-            position.exitDate = new Date(transaction.transactionDate);
-            position.exitPrice = transaction.price;
-            await position.save();
-          }
-        }
-      }
-    } else if (transaction.type === 'STOCK') {
+    if (transaction.type === 'STOCK') {
       if (transaction.positionType === 'LONG') {
         if (transaction.instruction === 'BUY') {
-          const positionDoc = {
-            entryDate: new Date(transaction.transactionDate),
-            entryPrice: transaction.price,
-            instrumentType: 'STOCK',
-            positionType: 'LONG',
-            quantity: transaction.quantity,
-            ticker: transaction.ticker,
-          };
-          await StockPosition.create(positionDoc);
+          const position = await findOneOpenPosition(transaction.ticker);
+          if (position === null) {
+            const positionDoc: StockPositionModel = {
+              entryDate: new Date(transaction.transactionDate),
+              totalEntryPrice: transaction.totalPrice,
+              instrumentType: 'STOCK',
+              positionType: 'LONG',
+              quantity: transaction.quantity,
+              quantityClosed: 0,
+              ticker: transaction.ticker,
+            };
+            await StockPosition.create(positionDoc);
+          } else {
+            position.quantity += transaction.quantity;
+            position.totalEntryPrice += transaction.totalPrice;
+            await position.save();
+          }
+        } else if (transaction.instruction === 'SELL') {
+          const position = await findOneOpenPosition(transaction.ticker);
+          if (position !== null) {
+            position.totalExitPrice = position.totalExitPrice
+              ? position.totalExitPrice + transaction.totalPrice : transaction.totalPrice;
+            position.exitDate = new Date(transaction.transactionDate);
+            position.quantityClosed += transaction.quantity;
+            await position.save();
+          }
         }
       }
     }
