@@ -32,6 +32,10 @@ test('should save trade data', async () => {
   };
   await StockPosition.create(jpmDoc);
   await saveTradeData();
+  await saveTradeData();
+
+  const ansJpmDocs: StockPositionInterface[] = await StockPosition.find({ ticker: 'JPM' });
+  expect(ansJpmDocs).toHaveLength(1);
 
   const ansJpmDoc: StockPositionInterface = await StockPosition.findOne({ ticker: 'JPM' });
   expect(ansJpmDoc.exitDate).toEqual(new Date('2021-07-19T13:38'));
