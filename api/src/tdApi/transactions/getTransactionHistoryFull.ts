@@ -6,7 +6,7 @@ export default async function getTransactionHistoryFull(account: number):
 Promise<AxiosResponse<Record<string, any>[]>> {
   const today = new Date();
   const startDate = new Date();
-  startDate.setDate(today.getDate() - 30);
+  startDate.setDate(today.getDate() - 300);
   const endDateString = today.toISOString().split('T')[0];
   const startDateString = startDate.toISOString().split('T')[0];
   const url = `https://api.tdameritrade.com/v1/accounts/${account}/transactions?type=TRADE&startDate=${startDateString}&endDate=${endDateString}`;

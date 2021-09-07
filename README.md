@@ -2,7 +2,7 @@
 
 Ubuntu start mongo db with command 
 ```
-monogod
+sudo monogod
 ```
 
 ## ENV Required

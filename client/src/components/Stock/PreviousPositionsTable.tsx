@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import Card from '@material-ui/core/Card'
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColDef} from '@mui/x-data-grid';
 import useApi from '../../hooks/useApi';
 import { StockPositionModel } from '../../../../api/src/model/stockPosition'
 
@@ -30,7 +29,7 @@ export default function PreviousPositionsTable() {
     fetchData()
   }, [])
 
-  const columns = [
+  const columns: GridColDef[] = [
     {
       field: 'ticker',
       headerName: 'Ticker',
@@ -47,12 +46,18 @@ export default function PreviousPositionsTable() {
       width: 150,
     },
     {
-      field: 'finalPositionSize',
+      field: 'closed',
+      headerName: 'Closed',
+      width: 150,
+      type: 'boolean'
+    },
+    {
+      field: 'totalExitPrice',
       headerName: 'Final Position Size',
       width: 150,
     },
     {
-      field: 'initialPositionSize',
+      field: 'totalEntryPrice',
       headerName: 'Initial Position Size',
       width: 150,
     },
@@ -72,24 +77,16 @@ export default function PreviousPositionsTable() {
       width: 150,
     },
     {
-      field: 'initialPositionSize',
-      headerName: 'Initial Position Size',
-      width: 150,
-    },
-    {
-      field: 'finalPositionSize',
-      headerName: 'Final Position Size',
-      width: 150,
-    },
-    {
       field: 'entryDate',
       headerName: 'Entry Date',
-      width: 150
+      width: 150,
+      type: 'dateTime',
     },
     {
       field: 'exitDate',
       headerName: 'Exit Date',
       width: 150,
+      type: 'dateTime',
     },
     {
       field: 'instrumentType',
