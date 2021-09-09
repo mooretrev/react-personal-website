@@ -3,7 +3,7 @@ import loadApiTokens from './loadApiTokens';
 import { TDAuthTokenModal } from '../../model/TDAuthToken';
 import refreshApiKey from './refreshApiKey';
 
-export default async function getApiToken() {
+export default async function getApiToken(): Promise<string> {
   const tokens: TDAuthTokenModal = await loadApiTokens();
   const currentTime = Math.floor(new Date().getTime() / 1000);
   const timeDiff = currentTime - tokens.time_stamp;

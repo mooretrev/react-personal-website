@@ -1,10 +1,10 @@
 import getTransactionHistory, { MinTransactionHistory } from '../getTransactionHistory';
-import getTransactionHistoryFull from '../getTransactionHistoryFull';
+import historyFull from '../getTransactionHistoryFull';
 import sampleTransactionData from './SampleTransactionHistory.json';
 
 jest.mock('../getTransactionHistoryFull');
 
-const mockGetTransactionHistory = getTransactionHistoryFull as jest.MockedFunction<typeof getTransactionHistoryFull>;
+const mockGetTransactionHistory = historyFull as jest.MockedFunction<typeof historyFull>;
 // Axios response request a lot of parameter to be filled when one the data field is being used
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

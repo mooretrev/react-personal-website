@@ -1,5 +1,5 @@
 import { connect, close, clearDatabase } from '../../db';
-import StockPosition, { StockPositionModel } from '../stockPosition';
+import StockPosition from '../stockPosition';
 import { findOneOpenPosition } from '../stockPositionQueries';
 
 beforeAll(async () => await connect());

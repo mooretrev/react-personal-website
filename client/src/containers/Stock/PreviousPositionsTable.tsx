@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import { DataGrid, GridColDef} from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import useApi from '../../hooks/useApi';
 import { StockPositionModel } from '../../../../api/src/model/stockPosition'
 
@@ -95,7 +95,7 @@ export default function PreviousPositionsTable() {
     }];
 
   setContent(
-    <DataGrid style={{ height: 400 }} rows={stockPositions} columns={columns} />
+    <DataGrid checkboxSelection style={{ height: '85vh' }} rows={stockPositions} columns={columns} />
   );
 
   return render();

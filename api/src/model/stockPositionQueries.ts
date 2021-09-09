@@ -14,8 +14,3 @@ export async function findOneOpenPosition(ticker: string): Promise<StockPosition
   }
   throw new Error('Mulitple differnt open positions.');
 }
-
-// TODO i have no clue how to keep track of switch transaction have been loogged
-export async function isStockTransaction() {
-
-}

@@ -1,5 +1,5 @@
 import mongoose, { ConnectOptions } from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
+import { MongoMemoryServer } from 'mongodb-memory-server'; // eslint-disable-line import/no-extraneous-dependencies
 
 const mongod = new MongoMemoryServer();
 
@@ -23,6 +23,7 @@ export async function close(): Promise<void> {
 export async function clearDatabase(): Promise<void> {
   const { collections } = mongoose.connection;
 
+  // eslint-disable-next-line
   for (const key in collections) {
     const collection = collections[key];
     await collection.deleteMany({});

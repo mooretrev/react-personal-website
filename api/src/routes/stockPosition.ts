@@ -8,10 +8,9 @@ const router = express.Router();
 
 router.get('/', jwtCheck, approved, async (req, res) => {
   try {
-    const positions = await StockPosition.find();
+    const positions = await StockPosition.find().sort({ exitDate: 'desc', entryDate: 'desc' });
     return res.json(positions);
   } catch (err) {
-    console.log(err);
     res.status(500);
     return res.json({
       errorMessage: 'There was an error in getting the stock position data',
@@ -46,7 +45,5 @@ router.post('/', jwtCheck, approved, async (req, res) => {
     return res.json({ errorMesssage: 'There was an error saving the position data' });
   }
 });
-
-router.get('/:id');
 
 export default router;

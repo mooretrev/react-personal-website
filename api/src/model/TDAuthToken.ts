@@ -1,10 +1,10 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface TDAuthTokenModal {
-    access_token: string;
-    refresh_token: string;
-    time_stamp: number;
-    refresh_time_stamp: number;
+    access_token: string; // eslint-disable-line camelcase
+    refresh_token: string; // eslint-disable-line camelcase
+    time_stamp: number; // eslint-disable-line camelcase
+    refresh_time_stamp: number; // eslint-disable-line camelcase
 }
 
 export interface TDAuthTokenInterface extends TDAuthTokenModal, Document {}

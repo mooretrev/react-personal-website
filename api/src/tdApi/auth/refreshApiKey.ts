@@ -4,15 +4,15 @@ import isRefreshTokenNeeded from './isRefreshTokenNeeded';
 import { TDAuthTokenModal as APITokens } from '../../model/TDAuthToken';
 
 export interface APIResponse {
-  access_token: string;
-  refresh_token?: string;
+  access_token: string; // eslint-disable-line camelcase
+  refresh_token?: string; // eslint-disable-line camelcase
 }
 
 export interface Params {
-  grant_type: string,
-  refresh_token: string;
-  client_id: string;
-  access_type?: string;
+  grant_type: string, // eslint-disable-line camelcase
+  refresh_token: string; // eslint-disable-line camelcase
+  client_id: string; // eslint-disable-line camelcase
+  access_type?: string; // eslint-disable-line camelcase
 }
 
 export default async function refreshApiKey(tokens: APITokens): Promise<APIResponse> {

@@ -1,5 +1,5 @@
 import saveTradeData from '../saveTradeData';
-import getTransactionHistory, { MinTransactionHistory } from '../../tdApi/transactions/getTransactionHistory';
+import History, { MinTransactionHistory } from '../../tdApi/transactions/getTransactionHistory';
 import getAccountsJSON from '../../tdApi/accounts/getAccountJSON';
 import sampleTransactionHisory from './SampleTransactionHistory.json';
 import StockPosition, { StockPositionInterface, StockPositionModel } from '../../model/stockPosition';
@@ -8,7 +8,7 @@ import { connect, close, clearDatabase } from '../../db';
 jest.mock('../../tdApi/accounts/getAccountJSON');
 jest.mock('../../tdApi/transactions/getTransactionHistory');
 
-const mockGetTransactionHistory = getTransactionHistory as jest.MockedFunction<typeof getTransactionHistory>;
+const mockGetTransactionHistory = History as jest.MockedFunction<typeof History>;
 const mockGetAccountsJSON = getAccountsJSON as jest.MockedFunction<typeof getAccountsJSON>;
 
 beforeAll(async () => await connect());

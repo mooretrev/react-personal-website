@@ -1,4 +1,4 @@
-import StockPosition, { StockPositionInterface, StockPositionModel } from '../model/stockPosition';
+import StockPosition, { StockPositionModel } from '../model/stockPosition';
 import { findOneOpenPosition } from '../model/stockPositionQueries';
 import getTransationHistory from '../tdApi/transactions/getTransactionHistory';
 import getAccountsJSON from '../tdApi/accounts/getAccountJSON';
