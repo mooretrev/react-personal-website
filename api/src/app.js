@@ -19,7 +19,7 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 // connect to mongodb
 if (process.env.NODE_ENV !== 'test') {
-  const url = `mongodb://localhost:27017/${process.env.MONGO_DB}`;
+  const url = process.env.MONGO_URL;
   mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

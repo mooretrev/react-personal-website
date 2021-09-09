@@ -4,3 +4,4 @@ globalConfig.json
 coverage/
 dist/
 src/tdApi/tokens
+docker.env

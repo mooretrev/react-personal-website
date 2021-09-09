@@ -1,0 +1,5 @@
+node_modules
+api/node_modules
+api/.env
+client/node_modules
+npm-debug.log
