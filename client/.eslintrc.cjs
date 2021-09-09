@@ -25,4 +25,32 @@ module.exports = {
     'no-unused-vars': ['warn', { varsIgnorePattern: 'React' }],
     'no-underscore-dangle': ['error', { allow: ['_id', '_recipes', 'recipe_items'] }],
   },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      extends: [
+        'airbnb',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+      ],
+      parserOptions: {
+        ecmaVersion: 2018,
+        sourceType: 'module',
+        project: './tsconfig.json',
+      },
+      plugins: ['@typescript-eslint'],
+      settings: {
+        'import/resolver': {
+          node: {
+            extensions: ['.js', '.ts'],
+          },
+        },
+      },
+      rules: {
+        'import/extensions': ['error', 'ignorePackages'],
+        'no-unused-vars': ['warn', { varsIgnorePattern: 'React' }],
+        'no-underscore-dangle': ['error', { allow: ['_id', '_recipes', 'recipe_items'] }],
+      },
+    },
+  ],
 };

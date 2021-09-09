@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import useApi from '../../hooks/useApi';
-import { StockPositionModel } from '../../../../api/src/model/stockPosition'
+import { StockPositionModel } from '../../../../api/src/model/stockPosition';
 
 export default function PreviousPositionsTable() {
   const [stockPositions, setStockPositions] = useState<StockPositionModel[]>([]);
@@ -11,23 +11,22 @@ export default function PreviousPositionsTable() {
     render,
     setLoading,
     setError,
-  } = useApi()
+  } = useApi();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true)
-        const response = await axios.get('/api/stockpositions')
-        setStockPositions(response.data)
-        setLoading(false)
+        setLoading(true);
+        const response = await axios.get('/api/stockpositions');
+        setStockPositions(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(true);
+        setLoading(false);
       }
-      catch (err) {
-        setError(true)
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
 
   const columns: GridColDef[] = [
     {
@@ -49,7 +48,7 @@ export default function PreviousPositionsTable() {
       field: 'closed',
       headerName: 'Closed',
       width: 150,
-      type: 'boolean'
+      type: 'boolean',
     },
     {
       field: 'totalExitPrice',
@@ -95,7 +94,7 @@ export default function PreviousPositionsTable() {
     }];
 
   setContent(
-    <DataGrid checkboxSelection style={{ height: '85vh' }} rows={stockPositions} columns={columns} />
+    <DataGrid checkboxSelection style={{ height: '85vh' }} rows={stockPositions} columns={columns} />,
   );
 
   return render();

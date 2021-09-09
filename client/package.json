@@ -34,7 +34,7 @@
     "test:update": "jest src -u",
     "test:watch": "jest src --watch",
     "test:coverage": "jest --coverage --colors",
-    "lint": "./node_modules/.bin/eslint src --fix --ext .js,.jsx"
+    "lint": "./node_modules/.bin/eslint src --fix --ext .js,.jsx,.ts,.tsx"
   },
   "browserslist": {
     "production": [
