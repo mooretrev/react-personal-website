@@ -11,7 +11,6 @@ import Recipe from './model/recipe.js';
 import MealPlan from './model/mealPlan.js';
 import Powerlifting from './model/powerlifting.js';
 import StockPosition from './routes/stockPosition';
-import indexRouter from './routes/index.js';
 import authRouter from './routes/auth.js';
 import scheduleTasks from './scheduleTasks';
 
@@ -48,20 +47,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({ origin: appOrigin }));
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../../client/build')));
 
-app.use('/', indexRouter);
 app.use('/api/recipes', restfulRouter(Recipe));
 app.use('/api/powerlifting', restfulRouter(Powerlifting));
 app.use('/api/mealplan', restfulRouter(MealPlan));
 app.use('/api/stockpositions', StockPosition);
 app.use('/api/auth', authRouter);
 
-if (process.env.NODE_ENV === 'production') {
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+});
 
 /**
  * Schedule periodic tasks

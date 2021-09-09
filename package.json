@@ -10,7 +10,7 @@
     "test"
   ],
   "scripts": {
-    "start": "cd api && node ./bin/www.js",
+    "start": "cd api && npm start",
     "server": "cd api && npm run server",
     "install": "npm run install-client && npm run install-api",
     "install-client": "cd client && npm install",
