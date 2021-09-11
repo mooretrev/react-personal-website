@@ -18,6 +18,7 @@
     "heroku-prebuild": "npm run install-client && npm run install-api",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
+    "build:docker": "docker build . --tag mooretrev/react-personal-website",
     "test": "npm run testClient && npm run testApi",
     "testClient": "cd client && npm run test:update",
     "testApi": "cd api && npm run test",
