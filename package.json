@@ -7,6 +7,7 @@
   },
   "pre-commit": [
     "lint",
+    "types",
     "test"
   ],
   "scripts": {
@@ -24,7 +25,9 @@
     "testApi": "cd api && npm run test",
     "lintClient": "cd client && npm run lint",
     "lintApi": "cd api && npm run lint",
-    "lint": "npm run lintClient && npm run lintApi"
+    "lint": "npm run lintClient && npm run lintApi",
+    "types": "npm run typesClient",
+    "typesClient": "cd client && npm run types"
   },
   "devDependencies": {
     "pre-commit": "^1.2.2"
