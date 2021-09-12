@@ -17,5 +17,10 @@ RUN npm install bcrypt
 
 COPY . .
 
+WORKDIR /app/client
+RUN npm run build
+
+WORKDIR /app
+
 EXPOSE 9000
 CMD ["npm", "start"]
