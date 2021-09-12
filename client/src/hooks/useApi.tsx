@@ -1,25 +1,25 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import GeneralMessage from './GeneralMessage';
 
 export interface UseApiInterface {
-    render: () => ReactNode;
+    render: () => ReactElement;
     loading: boolean;
     error: boolean;
     success: boolean;
     setLoading: (value: boolean) => void;
     setError: (value: boolean) => void;
     setSuccess: (value: boolean) => void;
-    setContent: (value: ReactNode) => void;
+    setContent: (value: ReactElement) => void;
 }
 export default function useApi(): UseApiInterface {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
-  let content: ReactNode;
+  let content: ReactElement;
 
-  const setContent = (value: ReactNode) => {
+  const setContent = (value: ReactElement) => {
     content = value;
   };
   const render = () => {

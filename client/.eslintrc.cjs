@@ -34,6 +34,9 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
       ],
       parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
         ecmaVersion: 2018,
         sourceType: 'module',
         project: './tsconfig.json',
@@ -42,14 +45,24 @@ module.exports = {
       settings: {
         'import/resolver': {
           node: {
-            extensions: ['.js', '.ts'],
+            extensions: ['.js', '.ts', '.tsx'],
           },
         },
       },
       rules: {
-        'import/extensions': ['error', 'ignorePackages'],
-        'no-unused-vars': ['warn', { varsIgnorePattern: 'React' }],
+        'no-unused-vars': 'off',
         'no-underscore-dangle': ['error', { allow: ['_id', '_recipes', 'recipe_items'] }],
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
+        'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+        'import/extensions': [
+          'error',
+          'ignorePackages',
+          {
+            ts: 'never',
+            tsx: 'never',
+          },
+        ],
       },
     },
   ],

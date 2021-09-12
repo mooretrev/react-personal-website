@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactElement } from 'react';
 import axios from 'axios';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import useApi from '../../hooks/useApi';
 import { StockPositionModel } from '../../../../api/src/model/stockPosition';
 
-export default function PreviousPositionsTable() {
+export default function PreviousPositionsTable(): ReactElement {
   const [stockPositions, setStockPositions] = useState<StockPositionModel[]>([]);
   const {
     setContent,
