@@ -5,25 +5,34 @@
   "engines": {
     "node": "12.x"
   },
-  "pre-commit": [ "lint", "test" ],
-
+  "pre-commit": [
+    "lint",
+    "types",
+    "test"
+  ],
   "scripts": {
-    "start": "cd api && node ./bin/www.js",
-    "server": "cd api && nodemon ./bin/www.js",
+    "start": "cd api && npm start",
+    "server": "cd api && npm run server",
     "install": "npm run install-client && npm run install-api",
     "install-client": "cd client && npm install",
     "install-api": "cd api && npm install",
     "heroku-prebuild": "npm run install-client && npm run install-api",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
+    "build:docker": "docker build . --tag mooretrev/react-personal-website",
     "test": "npm run testClient && npm run testApi",
     "testClient": "cd client && npm run test:update",
     "testApi": "cd api && npm run test",
     "lintClient": "cd client && npm run lint",
     "lintApi": "cd api && npm run lint",
-    "lint": "npm run lintClient && npm run lintApi"
+    "lint": "npm run lintClient && npm run lintApi",
+    "types": "npm run typesClient",
+    "typesClient": "cd client && npm run types"
   },
   "devDependencies": {
     "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "form-urlencoded": "^6.0.4"
   }
 }

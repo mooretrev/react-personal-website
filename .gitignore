@@ -1,1 +1,4 @@
 node_modules/
+***.DS_Store
+ec2package.zip
+docker.env
