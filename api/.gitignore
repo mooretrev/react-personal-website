@@ -3,5 +3,4 @@ node_modules
 globalConfig.json
 coverage/
 dist/
-src/tdApi/tokens
 docker.env
