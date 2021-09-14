@@ -14,9 +14,11 @@ export interface MinTransactionHistory {
 
 }
 
-export default async function getTransactionHistory(account: number):
+export default async function getTransactionHistory(
+  account: number, startDate?: Date, endDate?: Date,
+):
 Promise<MinTransactionHistory[]> {
-  const history = await getTransactionHistoryFull(account);
+  const history = await getTransactionHistoryFull(account, startDate, endDate);
   const res: MinTransactionHistory[] = history.data.map((transaction) => ({
     positionType: 'LONG',
     accountId: account,
