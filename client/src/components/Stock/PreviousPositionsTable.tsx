@@ -94,7 +94,7 @@ export default function PreviousPositionsTable(): ReactElement {
     }];
 
   setContent(
-    <DataGrid checkboxSelection style={{ height: '85vh' }} rows={stockPositions} columns={columns} />,
+    <DataGrid checkboxSelection style={{ height: '83vh' }} rows={stockPositions} columns={columns} />,
   );
 
   return render();
