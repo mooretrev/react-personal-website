@@ -16,7 +16,7 @@ import RecipesNew from './containers/Recipes/RecipesNew.jsx';
 import RecipesId from './containers/Recipes/RecipesId.jsx';
 import RecipesEdit from './containers/Recipes/RecipesEdit.jsx';
 import StockHome from './containers/Stock/StockHome.jsx';
-import PreviousPositionsTable from './containers/Stock/PreviousPositionsTable.tsx';
+import PreviousPositionsPage from './containers/Stock/PreviousPositionsPage.tsx';
 import useStyles from './styles/Index.jsx';
 import Theme from './styles/Theme.jsx';
 import MealPlanHome from './containers/MealPlan/MealPlanHome.jsx';
@@ -59,7 +59,7 @@ function App() {
               {/* eslint-disable-next-line react/jsx-props-no-spreading */}
               <Route className={appClasses.login} path="/login" render={(props) => (<Login {...props} setAuthenicated={setAuthenicated} />)} />
               <Route path="/signup" component={Signup} />
-              <PrivateRoute path="/stock/previousPositions" authenicated={authenicated} component={PreviousPositionsTable} />
+              <PrivateRoute path="/stock/previousPositions" authenicated={authenicated} component={PreviousPositionsPage} />
               <PrivateRoute path="/stock" authenicated={authenicated} component={StockHome} />
               <PrivateRoute authenicated={authenicated} path="/recipes/new" component={RecipesNew} />
               <PrivateRoute authenicated={authenicated} path="/recipes/:id/edit" component={RecipesEdit} />
