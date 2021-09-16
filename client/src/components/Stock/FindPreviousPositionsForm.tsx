@@ -94,11 +94,11 @@ export default function FindPreviousPositionsForm(): ReactElement {
 
   const handleFormSubmit = async () => {
     if (startDate === null) {
-      setStartDateError('The field is required.');
+      setStartDateError('This field is required.');
       return;
     }
     if (endDate === null) {
-      setEndDateError('The field is required.');
+      setEndDateError('This field is required.');
       return;
     }
 
@@ -163,6 +163,7 @@ export default function FindPreviousPositionsForm(): ReactElement {
             </Grid>
             <Grid item xs={12}>
               <DatePicker
+                id='previous-position-form-start-date'
                 className={classes.dateInputs}
                 format="MM/dd/yyyy"
                 label="Start Date"
@@ -175,6 +176,7 @@ export default function FindPreviousPositionsForm(): ReactElement {
             </Grid>
             <Grid item xs={12}>
               <DatePicker
+                id='previous-position-form-end-date'
                 required
                 format="MM/dd/yyyy"
                 className={classes.dateInputs}
