@@ -32,7 +32,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "npm run test:jest && npm run test:cypress",
+    "test:ci": "npm run test:jest && npm run test:cypress:ci",
+    "test:jest": "jest",
+    "test:cypress": "cypress run",
+    "test:cypress:ci": "start-server-and-test start http://localhost:3000 test:cypress",
     "eject": "react-scripts eject",
     "test:update": "jest src -u",
     "test:watch": "jest src --watch",
@@ -69,6 +73,7 @@
     "eslint-plugin-only-warn": "^1.0.2",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "start-server-and-test": "^1.14.0",
     "typescript": "^3.9"
   },
   "proxy": "http://localhost:9000/"

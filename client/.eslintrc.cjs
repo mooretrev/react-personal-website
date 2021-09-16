@@ -51,6 +51,7 @@ module.exports = {
       },
       rules: {
         'no-unused-vars': 'off',
+        'no-nested-ternary': 'off',
         'no-underscore-dangle': ['error', { allow: ['_id', '_recipes', 'recipe_items'] }],
         'no-use-before-define': 'off',
         '@typescript-eslint/no-use-before-define': ['error'],

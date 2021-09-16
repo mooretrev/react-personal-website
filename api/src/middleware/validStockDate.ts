@@ -27,14 +27,14 @@ export default function validStockDate(req: Request, res: Response, next: NextFu
     return;
   }
 
-  const numOfDays = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
-  if(numOfDays > 300) {
-    res.status(400)
-    res.json({errorMessage: 'Difference between startDate and endDate must be less than 300.'})
-    res.end()
+  const numOfDays = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
+  if (numOfDays > 300) {
+    res.status(400);
+    res.json({ errorMessage: 'Difference between startDate and endDate must be less than 300.' });
+    res.end();
     return;
   }
-  
+
   req.body.startDate = startDate;
   req.body.endDate = endDate;
   next();

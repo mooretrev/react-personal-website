@@ -121,9 +121,9 @@ export default function FindPreviousPositionsForm(): ReactElement {
       setSuccess(true);
       setError(false);
     } catch (err) {
-      const error = err as AxiosError;
-      const statusCode = error?.response?.status;
-      const errorMessage = error?.response?.data?.errorMessage;
+      const errorAxios = err as AxiosError;
+      const statusCode = errorAxios?.response?.status;
+      const errorMessage = errorAxios?.response?.data?.errorMessage;
       setLoading(false);
       setError(true);
       setApiError(errorMessage
@@ -163,7 +163,7 @@ export default function FindPreviousPositionsForm(): ReactElement {
             </Grid>
             <Grid item xs={12}>
               <DatePicker
-                id='previous-position-form-start-date'
+                id="previous-position-form-start-date"
                 className={classes.dateInputs}
                 format="MM/dd/yyyy"
                 label="Start Date"
@@ -176,7 +176,7 @@ export default function FindPreviousPositionsForm(): ReactElement {
             </Grid>
             <Grid item xs={12}>
               <DatePicker
-                id='previous-position-form-end-date'
+                id="previous-position-form-end-date"
                 required
                 format="MM/dd/yyyy"
                 className={classes.dateInputs}
@@ -192,10 +192,22 @@ export default function FindPreviousPositionsForm(): ReactElement {
               {loading && <CircularProgress />}
             </Grid>
             <Grid item xs={12}>
-              {error && <FormHelperText className={classes.errorMessage}>{apiError}</FormHelperText>}
+              {error && (
+              <FormHelperText
+                className={classes.errorMessage}
+              >
+                {apiError}
+              </FormHelperText>
+              )}
             </Grid>
             <Grid item xs={12}>
-              {success && <FormHelperText className={classes.successMessage}>Success</FormHelperText>}
+              {success && (
+              <FormHelperText
+                className={classes.successMessage}
+              >
+                Success
+              </FormHelperText>
+              )}
             </Grid>
             <Grid item xs={12}>
               <Button className={classes.sumbitButton} variant="outlined" onClick={handleFormSubmit}>

@@ -8,7 +8,7 @@ import validStockDate from '../middleware/validStockDate';
 export interface StockPositionPostBody {
   startDate: Date;
   endDate: Date;
-} 
+}
 
 const router = express.Router();
 
