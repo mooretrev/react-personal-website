@@ -10,6 +10,10 @@ import {
   MuiPickersUtilsProvider,
   DatePicker,
 } from '@material-ui/pickers';
+import axios, { AxiosError } from 'axios';
+import { CircularProgress, FormHelperText } from '@material-ui/core';
+import { StockPositionPostBody } from '../../../../api/src/routes/stockPosition';
+import useApi from '../../hooks/useApi';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -21,45 +25,110 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   dateInputs: {
     marginTop: theme.spacing(1),
-    width: '100%'
+    width: '100%',
   },
   popoverButton: {
-    marginBottom: theme.spacing(1)
-  }
+    marginBottom: theme.spacing(1),
+  },
+  errorMessage: {
+    color: theme.palette.error.main,
+  },
+  loading: {
+    marginTop: theme.spacing(1),
+  },
+  successMessage: {
+    color: theme.palette.success.main,
+  },
 }));
 
 export default function FindPreviousPositionsForm(): ReactElement {
   const classes = useStyles();
 
+  const {
+    error, loading, success, setError, setLoading, setSuccess,
+  } = useApi();
+
   const [startDate, setStartDate] = React.useState<Date | null>(null);
   const [endDate, setEndDate] = React.useState<Date | null>(null);
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
-  const [startDateError, setStartDateError] = React.useState('')
-  const [endDateError, setEndDateError] = React.useState('')
+  const [startDateError, setStartDateError] = React.useState('');
+  const [endDateError, setEndDateError] = React.useState('');
+
+  const [apiError, setApiError] = React.useState('');
+
+  const onPopoverClose = () => {
+    setAnchorEl(null);
+
+    setLoading(false);
+    setSuccess(false);
+    setError(false);
+
+    setStartDate(null);
+    setEndDate(null);
+
+    setStartDateError('');
+    setEndDateError('');
+
+    setApiError('');
+  };
+
+  const clearErrors = () => {
+    setEndDateError('');
+    setStartDateError('');
+  };
 
   const handleStartDateInput = (date: Date | null) => {
     if (startDateError !== '') {
-      setStartDateError('')
+      clearErrors();
     }
-    setStartDate(date)
-  }
+    setStartDate(date);
+  };
 
   const handleEndDateInput = (date: Date | null): void => {
     if (endDateError !== '') {
-      setEndDateError('')
+      clearErrors();
     }
-    setEndDate(date)
-  }
+    setEndDate(date);
+  };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     if (startDate === null) {
-      setStartDateError('The field is required.')
-      return
+      setStartDateError('This field is required.');
+      return;
     }
     if (endDate === null) {
-      setEndDateError('The field is required.')
-      return
+      setEndDateError('This field is required.');
+      return;
+    }
+
+    if (startDate > endDate) {
+      setStartDateError('The date must be before the end date');
+      setEndDateError('The date must be after the start date');
+      return;
+    }
+
+    try {
+      setSuccess(false);
+      setError(false);
+      setLoading(true);
+      const body: StockPositionPostBody = {
+        startDate,
+        endDate,
+      };
+      await axios.post('/api/stockpositions', body);
+      setLoading(false);
+      setSuccess(true);
+      setError(false);
+    } catch (err) {
+      const error = err as AxiosError;
+      const statusCode = error?.response?.status;
+      const errorMessage = error?.response?.data?.errorMessage;
+      setLoading(false);
+      setError(true);
+      setApiError(errorMessage
+        ? `${errorMessage} (${statusCode})`
+        : statusCode ? `Server side failure (${statusCode})` : 'Server side failure');
     }
   };
 
@@ -73,7 +142,7 @@ export default function FindPreviousPositionsForm(): ReactElement {
       <Popover
         open={open}
         anchorEl={anchorEl}
-        onClose={() => setAnchorEl(null)}
+        onClose={onPopoverClose}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',
@@ -94,23 +163,39 @@ export default function FindPreviousPositionsForm(): ReactElement {
             </Grid>
             <Grid item xs={12}>
               <DatePicker
+                id='previous-position-form-start-date'
                 className={classes.dateInputs}
+                format="MM/dd/yyyy"
                 label="Start Date"
                 value={startDate}
                 onChange={handleStartDateInput}
-                error={true}
                 required
-
+                helperText={startDateError}
+                error={startDateError !== ''}
               />
             </Grid>
             <Grid item xs={12}>
               <DatePicker
+                id='previous-position-form-end-date'
+                required
+                format="MM/dd/yyyy"
                 className={classes.dateInputs}
                 label="End Date"
                 value={endDate}
                 onChange={handleEndDateInput}
                 invalidLabel={endDateError}
+                helperText={endDateError}
+                error={endDateError !== ''}
               />
+            </Grid>
+            <Grid className={classes.loading} item container justifyContent="center" xs={12}>
+              {loading && <CircularProgress />}
+            </Grid>
+            <Grid item xs={12}>
+              {error && <FormHelperText className={classes.errorMessage}>{apiError}</FormHelperText>}
+            </Grid>
+            <Grid item xs={12}>
+              {success && <FormHelperText className={classes.successMessage}>Success</FormHelperText>}
             </Grid>
             <Grid item xs={12}>
               <Button className={classes.sumbitButton} variant="outlined" onClick={handleFormSubmit}>
