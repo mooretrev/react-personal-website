@@ -3,6 +3,12 @@ import jwtCheck from '../middleware/jwtCheck.js';
 import approved from '../middleware/approvedUser.js';
 import StockPosition from '../model/stockPosition';
 import saveTradeData from '../scheduledTasks/saveTradeData';
+import validStockDate from '../middleware/validStockDate';
+
+export interface StockPositionPostBody {
+  startDate: Date;
+  endDate: Date;
+}
 
 const router = express.Router();
 
@@ -36,13 +42,13 @@ router.get('/:id', jwtCheck, approved, async (req, res) => {
   }
 });
 
-router.post('/', jwtCheck, approved, async (req, res) => {
+router.post('/', jwtCheck, approved, validStockDate, async (req, res) => {
   try {
-    await saveTradeData();
+    await saveTradeData(req.body.startDate, req.body.endDate);
     return res.sendStatus(204);
   } catch (err) {
     res.status(500);
-    return res.json({ errorMesssage: 'There was an error saving the position data' });
+    return res.json({ errorMessage: 'Server side error saving or getting previous stock positions.' });
   }
 });
 

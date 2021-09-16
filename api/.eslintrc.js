@@ -52,6 +52,7 @@ module.exports = {
         'no-underscore-dangle': ['error', { allow: ['_id'] }],
         'no-return-await': 'off',
         'no-await-in-loop': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
       },
     },
   ],

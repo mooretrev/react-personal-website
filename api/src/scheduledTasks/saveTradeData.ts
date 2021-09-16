@@ -4,9 +4,9 @@ import getTransationHistory from '../tdApi/transactions/getTransactionHistory';
 import getAccountsJSON from '../tdApi/accounts/getAccountJSON';
 import stockTransaction, { StockTransactionModel } from '../model/stockTransaction';
 
-export default async function saveTradeData(): Promise<void> {
+export default async function saveTradeData(startDate?: Date, endDate?: Date): Promise<void> {
   const accounts = await getAccountsJSON();
-  const history = await getTransationHistory(accounts.mooretrev);
+  const history = await getTransationHistory(accounts.mooretrev, startDate, endDate);
   history.sort((t1, t2) => {
     if (t1.transactionDate < t2.transactionDate) {
       return -1;
