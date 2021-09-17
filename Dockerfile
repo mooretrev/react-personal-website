@@ -1,5 +1,7 @@
 FROM node:14
 
+ENV TZ=America/Mexico_City
+
 WORKDIR /app
 COPY package.json ./
 COPY api/package.json ./api/
