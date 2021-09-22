@@ -4,3 +4,4 @@ globalConfig.json
 coverage/
 dist/
 docker.env
+package-lock.json
