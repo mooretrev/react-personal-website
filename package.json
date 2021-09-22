@@ -8,7 +8,7 @@
   "pre-commit": [
     "lint",
     "types",
-    "test"
+    "test:ci"
   ],
   "scripts": {
     "start": "cd api && npm start",
