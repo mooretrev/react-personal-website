@@ -1,5 +1,5 @@
 import express from 'express';
-import jwtCheck from '../middleware/jwtCheck.js';
+import jwtCheck from '../middleware/jwtCheck';
 import approved from '../middleware/approvedUser.js';
 import StockPosition from '../model/stockPosition';
 import saveTradeData from '../scheduledTasks/saveTradeData';

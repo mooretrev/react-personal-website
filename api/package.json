@@ -9,7 +9,8 @@
     "test": "cd src && jest",
     "test:watch": "cd src && jest --watch",
     "test:coverage": "cd src && jest --coverage --colors -i",
-    "lint": "./node_modules/.bin/eslint src --fix --ext .js,.ts"
+    "lint": "./node_modules/.bin/eslint src --fix --ext .js,.ts",
+    "types": "tsc"
   },
   "dependencies": {
     "@babel/plugin-syntax-import-meta": "^7.10.4",
@@ -50,6 +51,7 @@
     "@babel/preset-typescript": "^7.14.5",
     "@shelf/jest-mongodb": "^1.2.3",
     "@types/jest": "^26.0.23",
+    "@types/jsonwebtoken": "^8.5.5",
     "@types/node-cron": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",

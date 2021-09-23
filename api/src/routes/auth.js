@@ -2,8 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import * as argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
-import User from '../model/user.js';
-import jwtCheck from '../middleware/jwtCheck.js';
+import User from '../model/user';
+import jwtCheck from '../middleware/jwtCheck';
 
 const router = express.Router();
 
