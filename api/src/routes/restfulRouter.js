@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import jwtCheck from '../middleware/jwtCheck.js';
+import jwtCheck from '../middleware/jwtCheck';
 import approved from '../middleware/approvedUser.js';
 
 export default function restfulRouter(model) {

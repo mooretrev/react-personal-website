@@ -1,4 +1,4 @@
-import User from '../model/user.js';
+import User from '../model/user';
 
 export default async (req, res, next) => {
   const decodedTokenData = req.tokenData;
