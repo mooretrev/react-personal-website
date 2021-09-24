@@ -4,3 +4,4 @@ api/.env
 client/node_modules
 client/build
 npm-debug.log
+client/.eslintrc.cjs

@@ -47,6 +47,7 @@ router.post('/', jwtCheck, approved, validStockDate, async (req, res) => {
     await saveTradeData(req.body.startDate, req.body.endDate);
     return res.sendStatus(204);
   } catch (err) {
+    console.log(err)
     res.status(500);
     return res.json({ errorMessage: 'Server side error saving or getting previous stock positions.' });
   }

@@ -9,13 +9,15 @@ COPY client/package.json ./client/
 RUN npm install
 
 WORKDIR /app/api
-RUN npm install
+RUN npm install --production
 
 WORKDIR /app/client
-RUN npm install
+RUN npm install --production
 
 WORKDIR /app
 RUN npm install bcrypt
+RUN npm install ts-node
+RUN npm install typescript@3.9
 
 COPY . .
 
