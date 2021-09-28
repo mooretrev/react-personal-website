@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import MealPlan from '../mealPlan.js';
+import MealPlan from '../mealPlan';
 import { connect, close, clearDatabase } from '../../db';
 
 beforeAll(async () => await connect());
