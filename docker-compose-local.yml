@@ -2,7 +2,7 @@ version: "3.3"
 services:
   reverse-proxy:
     image: nginx:1.17.10
-    container_name: reverse_proxy_demo
+    container_name: reverse-proxy
     depends_on:
         - api
     volumes:
@@ -14,12 +14,14 @@ services:
       - db
     env_file: 
       - docker.env
+    container_name: api
     build: 
       .
     ports:
       - 9000:9000
   db:
     image: mongo
+    container_name: db
     ports:
       - 8001:27017
     volumes:
