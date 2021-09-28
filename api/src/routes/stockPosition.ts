@@ -1,6 +1,6 @@
 import express from 'express';
 import jwtCheck from '../middleware/jwtCheck';
-import approved from '../middleware/approvedUser.js';
+import approved from '../middleware/approvedUser';
 import StockPosition from '../model/stockPosition';
 import saveTradeData from '../scheduledTasks/saveTradeData';
 import validStockDate from '../middleware/validStockDate';

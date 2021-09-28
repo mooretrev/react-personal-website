@@ -8,7 +8,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import restfulRouter from './routes/restfulRouter.js';
 import Recipe from './model/recipe.js';
-import MealPlan from './model/mealPlan.js';
+import MealPlan from './model/mealPlan';
 import Powerlifting from './model/powerlifting.js';
 import StockPosition from './routes/stockPosition';
 import authRouter from './routes/auth.js';
