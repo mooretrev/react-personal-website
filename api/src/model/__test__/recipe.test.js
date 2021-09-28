@@ -1,4 +1,4 @@
-import Recipe from '../recipe.js';
+import Recipe from '../recipe';
 
 describe('Recipe Validation', () => {
   it('should need recipe name', async () => {

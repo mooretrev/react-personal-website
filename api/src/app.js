@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import restfulRouter from './routes/restfulRouter.js';
-import Recipe from './model/recipe.js';
+import Recipe from './model/recipe';
 import MealPlan from './model/mealPlan';
 import Powerlifting from './model/powerlifting';
 import StockPosition from './routes/stockPosition';
