@@ -8,7 +8,7 @@ import { ThemeProvider } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import NavBar from './components/NavBar/NavBar.jsx';
 import Home from './containers/Home/Home.jsx';
-import RecipesHome from './containers/Recipes/RecipesHome.jsx';
+import RecipesHome from './containers/Recipes/RecipesHome.tsx';
 import PowerlifingHome from './containers/Powerlifting/PowerlifingHome.jsx';
 import PowerliftingMeetInput from './containers/Powerlifting/PowerliftingMeetInput.jsx';
 import RisheilHome from './containers/Risheil/RisheilHome.jsx';

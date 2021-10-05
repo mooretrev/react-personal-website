@@ -20,6 +20,13 @@ module.exports = {
     'react',
     'only-warn',
   ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   rules: {
     'import/extensions': ['error', 'ignorePackages'],
     'no-unused-vars': ['warn', { varsIgnorePattern: 'React' }],
