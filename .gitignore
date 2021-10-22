@@ -4,3 +4,4 @@ ec2package.zip
 docker.env
 ec2package
 mongodb/
+.env
