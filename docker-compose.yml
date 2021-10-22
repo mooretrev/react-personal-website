@@ -16,11 +16,13 @@ services:
       - docker.env
     container_name: api
     restart: always
-    image: mooretrev/react-personal-website
+    image: "mooretrev/react-personal-website:${TAG}"
     ports:
       - 9000:9000
+
   db:
     image: mongo
+    restart: always
     container_name: db
     ports:
       - 27017:27017
