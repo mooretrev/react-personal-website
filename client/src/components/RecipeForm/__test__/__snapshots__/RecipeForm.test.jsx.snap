@@ -11,7 +11,7 @@ exports[`<RecipeForm /> should render correctly 1`] = `
       xs={12}
     >
       <WithStyles(ForwardRef(Card))
-        className="makeStyles-cardPadding-14"
+        className="makeStyles-cardPadding-13"
       >
         <WithStyles(ForwardRef(Typography))
           variant="h2"
@@ -34,7 +34,7 @@ exports[`<RecipeForm /> should render correctly 1`] = `
     >
       <div>
         <WithStyles(ForwardRef(Card))
-          className="makeStyles-cardPadding-14"
+          className="makeStyles-cardPadding-13"
         >
           <RecipeCreateItem
             index={0}
@@ -92,7 +92,7 @@ exports[`<RecipeForm /> should render correctly 2`] = `
       xs={12}
     >
       <WithStyles(ForwardRef(Card))
-        className="makeStyles-cardPadding-14"
+        className="makeStyles-cardPadding-13"
       >
         <WithStyles(ForwardRef(Typography))
           variant="h2"
@@ -115,7 +115,7 @@ exports[`<RecipeForm /> should render correctly 2`] = `
     >
       <div>
         <WithStyles(ForwardRef(Card))
-          className="makeStyles-cardPadding-14"
+          className="makeStyles-cardPadding-13"
         >
           <RecipeCreateItem
             index={0}
@@ -162,7 +162,7 @@ exports[`<RecipeForm /> should render correctly 2`] = `
     >
       <div>
         <WithStyles(ForwardRef(Card))
-          className="makeStyles-cardPadding-14"
+          className="makeStyles-cardPadding-13"
         >
           <RecipeCreateItem
             index={1}
