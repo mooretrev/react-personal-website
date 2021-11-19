@@ -5,7 +5,6 @@ import {
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { DataGrid } from '@mui/x-data-grid';
-import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import useUniversialStyles from '../../styles/Index.jsx';
 import GetRecipes from '../../api/Recipes/GetRecipes.js';
@@ -14,7 +13,7 @@ import { RecipeInterface } from '../../../../api/src/model/recipe';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   datagrid: {
-    height: '60vh',
+    height: 'calc(100vh - 64px - 72px - 44px - 60px)',
     margin: theme.spacing(1),
   },
 }));
@@ -49,15 +48,12 @@ export default function RecipesHome(): React.ReactElement {
 
   const searchBar = (
     <Grid item xs={12}>
-      <Card>
-        <Autocomplete
-          className={universalClasses.searchBar}
-          options={recipeNames}
-          onInputChange={handleRecipeSearch}
-          /* eslint-disable-next-line react/jsx-props-no-spreading */
-          renderInput={(params) => <TextField {...params} label="Search Recipes" variant="outlined" />}
-        />
-      </Card>
+      <Autocomplete
+        options={recipeNames}
+        onInputChange={handleRecipeSearch}
+        /* eslint-disable-next-line react/jsx-props-no-spreading */
+        renderInput={(params) => <TextField {...params} label="Search Recipes" variant="outlined" />}
+      />
     </Grid>
   );
 

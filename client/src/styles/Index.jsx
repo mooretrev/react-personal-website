@@ -59,9 +59,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     textDecoration: 'none',
   },
-  searchBar: {
-    margin: '10px',
-  },
   cardPadding: {
     padding: '15px',
   },
